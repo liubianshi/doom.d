@@ -50,4 +50,6 @@
 ;(unpin! t)
 ;
 (package! rime)
-
+(package! polymode)
+(package! poly-R)
+(package! poly-markdown)

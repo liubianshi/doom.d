@@ -74,7 +74,7 @@
 (setq rime-posframe-style 'simple)
 (setq rime-posframe-properties
       (list :font "sarasa mono sc"
-            :internal-border-width 14))
+            :internal-border-width 6))
 (setq rime-user-data-dir "~/.local/share/fcitx5/rime")
 (setq rime-disable-predicates
       '(rime-predicate-evil-mode-p
@@ -106,3 +106,4 @@
 
 ;; markdown
 (setq grip-preview-use-webkit t)
+(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown+r-mode))

@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Liubianshi"
+      user-mail-address "liu.bian.shi@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -28,19 +28,23 @@
       doom-variable-pitch-font (font-spec :family "Fira Code iCursive S12" :size 28)
       doom-unicode-font (font-spec :family "Sarasa Fixed Slab SC" :size 28)
       doom-serif-font (font-spec :family "Sarasa Fixed Slab SC" :size 28)
-      doom-big-font (font-spec :family "Fira Code iCursive S12" :size 28))
-(add-to-list 'doom-unicode-extra-fonts "Sarasa Fixed Slab SC" t)
+      doom-big-font (font-spec :family "Fira Code iCursive S12" :size 36))
+;; (add-to-list 'doom-unicode-extra-fonts "Sarasa Fixed Slab SC" t)
 
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-Iosvkem)
+(setq initial-major-mode 'org-mode)
+(setq display-line-numbers-type 'relative)
+(setq doom-fallback-buffer-name "► Doom"
+      +doom-dashboard-name "► Doom")
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/.org/")
+(setq org-directory "~/Documents/org/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type `relative)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -62,7 +66,7 @@
 ;;
 ;;
 (setq default-input-method "rime")
-(setq-default line-spacing 14)
+(setq-default line-spacing 10)
 (setq confirm-kill-emacs nil)
 
 ;; rime
@@ -86,7 +90,7 @@
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
-  (setq org-roam-directory "~/.config/diySync/roam/")
+  (setq org-roam-directory "~/Repositories/roam")
   (setq org-roam-graph-viewer "/usr/bin/xdg-open")
   (map! :leader
   :prefix "r"

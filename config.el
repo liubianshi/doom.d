@@ -29,7 +29,7 @@
       doom-unicode-font (font-spec :family "Sarasa Fixed SC" :size 28)
       doom-serif-font (font-spec :family "Sarasa Fixed SC" :size 28)
       doom-big-font (font-spec :family "Sarasa Fixed SC" :size 28))
-(add-to-list 'doom-unicode-extra-fonts "Sarasa Fixed SC" t)
+;(add-to-list 'doom-unicode-extra-fonts "Sarasa Fixed SC" t)
 
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-dracula)
@@ -67,7 +67,7 @@
 ;;
 ;;
 (setq default-input-method "rime")
-(setq-default line-spacing 14)
+;;(setq-default line-spacing 14)
 (setq confirm-kill-emacs nil)
 
 ;; rime
@@ -97,7 +97,7 @@
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
-  (setq org-roam-directory "~/Repositories/roam")
+  (setq org-roam-directory "~/Repositories/org/roam")
   (setq org-roam-graph-viewer "/usr/bin/xdg-open")
   (map! :leader
   :prefix "r"
@@ -115,7 +115,30 @@
 (setq grip-preview-use-webkit t)
 (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown+r-mode))
 
-;; elang
-(setq elfeed-feeds
-      '("https://this-week-in-rust.org/rss.xml"
-        "http://feeds.bbci.co.uk/news/rss.xml"))
+(setq window-system-default-frame-alist
+      '(
+        ;; if frame created on x display
+        (x
+         (menu-bar-lines . nil)
+         (tool-bar-lines . nil)
+         ;; mouse
+         (mouse-wheel-mode . 1)
+         (mouse-wheel-follow-mouse . t)
+         (mouse-avoidance-mode . 'exile)
+         ;; face 具体可以更换为系统支持的中文字体
+         (font . "Sarasa Fixed SC")
+         )
+        ;; if on term
+        (nil
+         (menu-bar-lines . 0) (tool-bar-lines . 0)
+         ;; (background-color . "black")
+         ;; (foreground-color . "white")
+         )
+        )
+      )
+
+;; Elfeed Config
+;;
+;; use an org file to organise feeds
+(setq rmh-elfeed-org-files (list "~/.doom.d/elfeed.org")
+      elfeed-curl-extra-arguments '("--proxy" "socks5://127.0.0.1:1081"))

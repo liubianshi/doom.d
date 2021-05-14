@@ -1,0 +1,40 @@
+* RSS                                                          :elfeed:
+** Notice :notice:
+*** https://feed43.com/4306248658001011.xml "~南开大学：通知公告"
+** Paper :perper:
+*** https://www.aeaweb.org/research/rss-feed
+*** http://qje.oxfordjournals.org/rss/current.xml
+*** https://www.nber.org/rss/new.xml
+** Blog :blog:
+*** http://lukesmith.xyz/rss.xml
+*** https://www.archlinux.org/feeds/news/
+*** http://feeds2.feedburner.com/programthink
+*** http://feeds.feedburner.com/ruanyifeng
+*** https://ohmycloud.github.io/index.xml
+*** https://iseex.github.io/feed.xml
+*** https://www.codesections.com/rss.xml
+*** https://www.williamlong.info/rss.xml
+*** https://coolshell.cn/feed
+*** https://ioover.net/feed.xml
+*** https://zilongshanren.com/index.
+** News                                                         :news:
+*** https://chinadigitaltimes.net/chinese/feed/
+*** http://cn.nytimes.com/rss/news.xml
+*** http://www.199it.com/feed
+** tech :tech:
+*** https://pl6anet.org/atom.xml
+*** http://feeds.feedburner.com/RBloggers
+*** https://ohmysummer.github.io/index.xml
+*** http://feed.appinn.com/
+*** https://sspai.com/feed
+*** http://cos.name/feed/
+** Life :life:
+*** https://www.chiphell.com/portal.php?mod=rss&catid=132
+*** https://www.chiphell.com/portal.php?mod=rss&catid=45
+*** https://www.chiphell.com/portal.php?mod=rss&catid=70
+*** https://www.chiphell.com/portal.php?mod=rss&catid=101
+** Twitter :twitter:
+*** https://rsshub.app/twitter/user/HeQinglian
+*** https://rsshub.app/twitter/user/VictoriaTC
+*** https://rsshub.app/twitter/user/NAConservative9
+*** https://rsshub.app/twitter/user/CaoChangqing

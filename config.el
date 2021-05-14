@@ -24,16 +24,18 @@
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
-(setq doom-font (font-spec :family "Fira Code iCursive S12" :size 28)
-      doom-variable-pitch-font (font-spec :family "Fira Code iCursive S12" :size 28)
-      doom-unicode-font (font-spec :family "Sarasa Fixed Slab SC" :size 28)
-      doom-serif-font (font-spec :family "Sarasa Fixed Slab SC" :size 28)
-      doom-big-font (font-spec :family "Fira Code iCursive S12" :size 36))
-;(add-to-list :doom-unicode-extra-fonts "Sarasa Fixed Slab SC" t)
+(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 28)
+      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font Mono" :size 28)
+      doom-unicode-font (font-spec :family "Sarasa Fixed SC" :size 28)
+      doom-serif-font (font-spec :family "Sarasa Fixed SC" :size 28)
+      doom-big-font (font-spec :family "Sarasa Fixed SC" :size 28))
+;(add-to-list 'doom-unicode-extra-fonts "Sarasa Fixed SC" t)
 
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-Iosvkem)
+(setq doom-theme 'doom-dracula)
 (setq initial-major-mode 'org-mode)
+(setq display-line-numbers-type 'relative)
+(setq-default cursor-type 'bar)
 (setq doom-fallback-buffer-name "► Doom"
       +doom-dashboard-name "► Doom")
 
@@ -64,33 +66,37 @@
 ;;
 ;;
 (setq default-input-method "rime")
-(setq-default line-spacing 10)
+;;(setq-default line-spacing 14)
 (setq confirm-kill-emacs nil)
 
 ;; rime
 (setq rime-show-candidate 'posframe)
-(setq rime-posframe-style 'simple)
+(setq rime-posframe-style 'vertical)
 (setq rime-posframe-properties
-      (list :font "sarasa mono slab sc"
-            :internal-border-width 2))
+      (list :font "sarasa fixed sc-14"
+            :background-color "#333333"
+            :foreground-color "#dcdccc"
+            :internal-border-width 6))
 (setq rime-user-data-dir "~/.local/share/fcitx5/rime")
+(setq rime-inline-ascii-holder nil)
 (setq rime-disable-predicates
       '(rime-predicate-evil-mode-p
-        rime-predicate-after-alphabet-char-p
         rime-predicate-prog-in-code-p
-        rime-predicate-punctuation-after-space-cc-p
-        rime-predicate-punctuation-after-ascii-p
-        rime-predicate-space-after-cc-p
-        rime-predicate-punctuation-line-begin-p
         rime-predicate-current-uppercase-letter-p
+        rime-predicate-punctuation-line-begin-p
+        rime-predicate-after-alphabet-char-p
+        rime-predicate-space-after-cc-p
+        rime-predicate-punctuation-after-space-cc-p
         rime-predicate-tex-math-or-command-p))
-(setq rime-inline-ascii-trigger 'control-l)
+(map! :desc "Toggle Input Method" "<f12>" #'toggle-input-method)
+(map! :map rime-active-mode-map "<tab>" #'rime-inline-ascii)
+
 
 ;; org-mode
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
-  (setq org-roam-directory "~/Repositories/roam")
+  (setq org-roam-directory "~/Repositories/org/roam")
   (setq org-roam-graph-viewer "/usr/bin/xdg-open")
   (map! :leader
   :prefix "r"
@@ -107,3 +113,31 @@
 ;; markdown
 (setq grip-preview-use-webkit t)
 (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown+r-mode))
+
+(setq window-system-default-frame-alist
+      '(
+        ;; if frame created on x display
+        (x
+         (menu-bar-lines . nil)
+         (tool-bar-lines . nil)
+         ;; mouse
+         (mouse-wheel-mode . 1)
+         (mouse-wheel-follow-mouse . t)
+         (mouse-avoidance-mode . 'exile)
+         ;; face 具体可以更换为系统支持的中文字体
+         (font . "Sarasa Fixed SC")
+         )
+        ;; if on term
+        (nil
+         (menu-bar-lines . 0) (tool-bar-lines . 0)
+         ;; (background-color . "black")
+         ;; (foreground-color . "white")
+         )
+        )
+      )
+
+;; Elfeed Config
+;;
+;; use an org file to organise feeds
+(setq rmh-elfeed-org-files (list "~/.doom.d/elfeed.org")
+      elfeed-curl-extra-arguments '("--proxy" "socks5://127.0.0.1:1081"))

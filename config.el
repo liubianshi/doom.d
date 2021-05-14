@@ -97,7 +97,7 @@
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
-  (setq org-roam-directory "~/Repositories/org/roam")
+  (setq org-roam-directory "~/.config/diySync/roam/")
   (setq org-roam-graph-viewer "/usr/bin/xdg-open")
   (map! :leader
   :prefix "r"

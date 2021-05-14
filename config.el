@@ -29,12 +29,11 @@
       doom-unicode-font (font-spec :family "Sarasa Fixed Slab SC" :size 28)
       doom-serif-font (font-spec :family "Sarasa Fixed Slab SC" :size 28)
       doom-big-font (font-spec :family "Fira Code iCursive S12" :size 36))
-;; (add-to-list 'doom-unicode-extra-fonts "Sarasa Fixed Slab SC" t)
+;(add-to-list :doom-unicode-extra-fonts "Sarasa Fixed Slab SC" t)
 
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-Iosvkem)
 (setq initial-major-mode 'org-mode)
-(setq display-line-numbers-type 'relative)
 (setq doom-fallback-buffer-name "► Doom"
       +doom-dashboard-name "► Doom")
 
@@ -44,8 +43,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type `relative)
-
+(setq display-line-numbers-type 'relative)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -73,15 +71,17 @@
 (setq rime-show-candidate 'posframe)
 (setq rime-posframe-style 'simple)
 (setq rime-posframe-properties
-      (list :font "sarasa mono sc"
-            :internal-border-width 6))
+      (list :font "sarasa mono slab sc"
+            :internal-border-width 2))
 (setq rime-user-data-dir "~/.local/share/fcitx5/rime")
 (setq rime-disable-predicates
       '(rime-predicate-evil-mode-p
         rime-predicate-after-alphabet-char-p
         rime-predicate-prog-in-code-p
         rime-predicate-punctuation-after-space-cc-p
+        rime-predicate-punctuation-after-ascii-p
         rime-predicate-space-after-cc-p
+        rime-predicate-punctuation-line-begin-p
         rime-predicate-current-uppercase-letter-p
         rime-predicate-tex-math-or-command-p))
 (setq rime-inline-ascii-trigger 'control-l)

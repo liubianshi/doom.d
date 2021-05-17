@@ -48,8 +48,10 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
-;
 (package! rime)
 (package! polymode)
 (package! poly-R)
 (package! poly-markdown)
+(package! elfeed-dashboard)
+(package! ace-link)
+;;(package! cnfonts)

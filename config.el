@@ -153,6 +153,11 @@
 
 (setq doom-localleader-key ";")
 (setq doom-localleader-alt-key "M-;")
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((stata . t)
+   (r . t)
+   ))
 
 ;; markdown
 (setq grip-preview-use-webkit t)

@@ -9,6 +9,37 @@
 (setq user-full-name "Liubianshi"
       user-mail-address "liu.bian.shi@gmail.com")
 
+(setq-default
+    delete-by-moving-to-trash t        ; Delete files to trash
+    window-combination-resize t        ; take new window space from all other windows (not just current)
+    x-stretch-cursor t)                ; Stretch cursor to the glyph width
+(setq undo-limit 80000000              ; Raise undo-limit to 80Mb
+      evil-want-fine-undo t            ; By default while in insert all changes are one big blob. Be more granular
+      auto-save-default t              ; Nobody likes to loose work, I certainly don't
+      truncate-string-ellipsis "…")    ; Unicode ellispis are nicer than "...", and also save /precious/ space
+(display-time-mode 1)                  ; Enable time in the mode-line
+
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+(defadvice! prompt-for-buffer (&rest _)
+  :after '(evil-window-split evil-window-vsplit)
+  (+ivy/switch-buffer))
+(setq +ivy-buffer-preview t)
+(map! :map evil-window-map
+      "SPC" #'rotate-layout
+      ;; Navigation
+      "<left>"     #'evil-window-left
+      "<down>"     #'evil-window-down
+      "<up>"       #'evil-window-up
+      "<right>"    #'evil-window-right
+      ;; Swapping windows
+      "C-<left>"       #'+evil/window-move-left
+      "C-<down>"       #'+evil/window-move-down
+      "C-<up>"         #'+evil/window-move-up
+      "C-<right>"      #'+evil/window-move-right)
+
+
+
 (setq window-system-default-frame-alist
       '(
         ;; if frame created on x display

@@ -166,7 +166,6 @@
 (map! :desc "Toggle Input Method" "<f12>" #'toggle-input-method)
 (map! :map rime-active-mode-map "<tab>" #'rime-inline-ascii)
 
-
 ;; org-mode
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
@@ -403,3 +402,13 @@
             (funcall file-view-function file))))))
 
   )
+
+;; fasd
+(use-package! fasd
+  :commands (fasd-find-file)
+  :init
+  (map! :leader
+        :prefix "f"
+        :desc "fasd-find-file" "z" #'fasd-find-file)
+  :config
+  (global-fasd-mode 1))

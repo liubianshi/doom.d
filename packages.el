@@ -53,5 +53,6 @@
 (package! poly-R)
 (package! poly-markdown)
 (package! elfeed-dashboard)
-(package! ace-link)
-;;(package! cnfonts)
+;(package! ace-link)
+(package! fasd)
+(package! ado-mode)

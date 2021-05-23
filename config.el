@@ -8,15 +8,17 @@
 ;; clients, file templates and snippets.
 (setq user-full-name "Liubianshi"
       user-mail-address "liu.bian.shi@gmail.com")
+(setq doom-localleader-key ";")
+(setq doom-localleader-alt-key "M-;")
 
 (setq-default
     delete-by-moving-to-trash t        ; Delete files to trash
     window-combination-resize t        ; take new window space from all other windows (not just current)
     x-stretch-cursor t)                ; Stretch cursor to the glyph width
 (setq undo-limit 80000000              ; Raise undo-limit to 80Mb
-      evil-want-fine-undo t            ; By default while in insert all changes are one big blob. Be more granular
-      auto-save-default t              ; Nobody likes to loose work, I certainly don't
-      truncate-string-ellipsis "…")    ; Unicode ellispis are nicer than "...", and also save /precious/ space
+       evil-want-fine-undo t            ; By default while in insert all changes are one big blob. Be more granular
+       auto-save-default t              ; Nobody likes to loose work, I certainly don't
+       truncate-string-ellipsis "…")    ; Unicode ellispis are nicer than "...", and also save /precious/ space
 (display-time-mode 1)                  ; Enable time in the mode-line
 
 (setq evil-vsplit-window-right t
@@ -37,8 +39,6 @@
       "C-<down>"       #'+evil/window-move-down
       "C-<up>"         #'+evil/window-move-up
       "C-<right>"      #'+evil/window-move-right)
-
-
 
 (setq window-system-default-frame-alist
       '(
@@ -115,10 +115,6 @@
 (setq doom-fallback-buffer-name "► Doom"
       +doom-dashboard-name "► Doom")
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Documents/org/")
-
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
@@ -145,6 +141,26 @@
 (setq line-spacing 0.5)
 (setq confirm-kill-emacs nil)
 ;; rime
+(defun rime-predicate-space-after-lbs-p ()
+  "If cursor is after a whitespace which follow a non-ascii character."
+  (and (> (point) (save-excursion (back-to-indentation) (point)))
+       (let ((string (buffer-substring (point) (max (line-beginning-position) (- (point) 80)))))
+         (string-match-p "[=~`@$]$" string))))
+(defun rime-predicate-tex-math-or-command-lbs-p ()
+  (and (derived-mode-p 'tex-mode 'markdown-mode 'ess-r-mode)
+       (or (and (featurep 'tex-site)
+                (texmathp))
+           (and rime--current-input-key
+                (or (= #x24 rime--current-input-key)
+                    (= #x5c rime--current-input-key))
+                (or (= (point) (line-beginning-position))
+                    (= #x20 (char-before))
+                    (rime-predicate-after-ascii-char-p)))
+           (and (> (point) (save-excursion (back-to-indentation) (point)))
+                (let ((string (buffer-substring (point) (max (line-beginning-position) (- (point) 80)))))
+                  (or (string-match-p "[\x5c][\x21-\x24\x26-\x7e]*$" string)
+                      (string-match-p "[\x5c][a-zA-Z\x23\x40]+[\x7b][^\x7d\x25]*$" string)))))))
+
 (setq rime-show-candidate 'posframe)
 (setq rime-posframe-style 'horizontal)
 (setq rime-posframe-properties
@@ -162,15 +178,28 @@
         rime-predicate-after-alphabet-char-p
         rime-predicate-space-after-cc-p
         rime-predicate-punctuation-after-space-cc-p
-        rime-predicate-tex-math-or-command-p))
+        rime-predicate-tex-math-or-command-lbs-p
+        rime-predicate-space-after-lbs-p))
 (map! :desc "Toggle Input Method" "<f12>" #'toggle-input-method)
 (map! :map rime-active-mode-map "<tab>" #'rime-inline-ascii)
 
 ;; org-mode
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/Documents/org/")
+(defun +org-capture-ideas-file ()
+  "Expand `+org-capture-ideass-file' from `org-directory'. "
+  (expand-file-name "ideas.org" org-directory))
+(after! org
+  (add-to-list 'org-capture-templates
+             '("i" "ideas collected" entry
+               (file +org-capture-ideas-file)
+               "*  %^{heading} %t %^g\n %?\n" :prepend t)))
+
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
-  (setq org-roam-directory "~/.config/diySync/roam/")
+  (setq org-roam-directory (expand-file-name "roam" org-directory))
   (setq org-roam-graph-viewer "/usr/bin/xdg-open")
   (map! :leader
   :prefix "r"
@@ -181,8 +210,6 @@
   (org-roam-mode +1))
 (add-hook 'after-init-hook 'org-roam-mode)
 
-(setq doom-localleader-key ";")
-(setq doom-localleader-alt-key "M-;")
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((stata . t)

@@ -145,7 +145,7 @@
   "If cursor is after a whitespace which follow a non-ascii character."
   (and (> (point) (save-excursion (back-to-indentation) (point)))
        (let ((string (buffer-substring (point) (max (line-beginning-position) (- (point) 80)))))
-         (string-match-p "[=~`@$]$" string))))
+         (string-match-p "[=~`@<$]$" string))))
 (defun rime-predicate-tex-math-or-command-lbs-p ()
   (and (derived-mode-p 'tex-mode 'markdown-mode 'ess-r-mode)
        (or (and (featurep 'tex-site)
@@ -182,19 +182,35 @@
         rime-predicate-space-after-lbs-p))
 (map! :desc "Toggle Input Method" "<f12>" #'toggle-input-method)
 (map! :map rime-active-mode-map "<tab>" #'rime-inline-ascii)
+(map! :n "j"  #'evil-next-visual-line
+      :n "k"  #'evil-previous-visual-line
+      :n "gj" #'evil-next-line
+      :n "gk" #'evil-previous-line)
+
 
 ;; org-mode
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Documents/org/")
 (defun +org-capture-ideas-file ()
-  "Expand `+org-capture-ideass-file' from `org-directory'. "
   (expand-file-name "ideas.org" org-directory))
+(defun +org-capture-question-file ()
+  (expand-file-name "question-solving.org" org-directory))
 (after! org
   (add-to-list 'org-capture-templates
              '("i" "ideas collected" entry
                (file +org-capture-ideas-file)
-               "*  %^{heading} %t %^g\n %?\n" :prepend t)))
+               "*  %^{heading} %t %^g\n %?\n" :prepend t))
+  (add-to-list 'org-capture-templates
+                '("k" "Quesion Solved" entry
+                (file +org-capture-question-file)
+                "* TODO %^{Question} %t %^g\n\n** Description\n %?\n\n** Solved Method\n\n** Problem Solving Process\n"
+                :prepend t)))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((stata . t)
+   (r . t)))
 
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
@@ -207,14 +223,46 @@
   :desc "Org-Roam-Find"   "/" #'org-roam-find-file
   :desc "Org-Roam-Buffer" "r" #'org-roam)
   :config
-  (org-roam-mode +1))
+  (org-roam-mode +1)
+  )
 (add-hook 'after-init-hook 'org-roam-mode)
 
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((stata . t)
-   (r . t)
-   ))
+(use-package! org-roam-server
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 9090
+        org-roam-server-authenticate nil
+        org-roam-server-export-inline-images t
+        org-roam-server-serve-files nil
+        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
+
+(after! org-roam
+  (add-to-list 'org-roam-capture-templates
+               '("t" "Term" plain (function org-roam-capture--get-point)
+                 "+ 领域: %^{术语所属领域}\n + 释义: %?\n"
+                 :file-name "%<%Y%m%d%H%M%S>-${slug}"
+                 :head "#+TITLE: ${title}\n#+ROAM_ALIAS:\n#+ROAM_TAGS: \n\n"
+                 :unnarrowed t))
+  (add-to-list 'org-roam-capture-templates
+               '("t" "Term" plain (function org-roam-capture--get-point)
+                 "+ 领域: %^{术语所属领域}\n + 释义: %?\n"
+                 :file-name "%<%Y%m%d%H%M%S>-${slug}"
+                 :head "#+TITLE: ${title}\n#+ROAM_ALIAS:\n#+ROAM_TAGS: \n\n"
+                 :unnarrowed t))
+  (add-to-list 'org-roam-capture-ref-templates
+               '("a" "Annotation" plain (function org-roam-capture--get-point)
+                 "%U ${body}\n"
+                 :file-name "${slug}"
+                 :head "#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_ALIAS:\n"
+                 :immediate-finish t
+                 :unnarrowed t
+                 :empty-lines 1))
+)
 
 ;; markdown
 (setq grip-preview-use-webkit t)

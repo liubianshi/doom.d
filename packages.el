@@ -56,3 +56,4 @@
 ;(package! ace-link)
 (package! fasd)
 (package! ado-mode)
+(package! org-roam-server)

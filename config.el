@@ -487,3 +487,17 @@
         :desc "fasd-find-file" "z" #'fasd-find-file)
   :config
   (global-fasd-mode 1))
+
+;; deft
+(setq deft-directory "~/Documents/deft"
+      deft-extensions '("org" "md" "Rmd" "txt")
+      deft-recursive t)
+
+;; evil-pinyin
+(use-package! evil-pinyin
+  :init
+  (setq-default evil-pinyin-scheme 'simplified-xiaohe-all)
+  (setq-default evil-pinyin-with-search-rule 'custom)
+
+  :config
+  (global-evil-pinyin-mode))

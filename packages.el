@@ -57,3 +57,4 @@
 (package! fasd)
 (package! ado-mode)
 (package! org-roam-server)
+(package! evil-pinyin)

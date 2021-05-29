@@ -1,5 +1,4 @@
 ;;; init.el -*- lexical-binding: t; -*-
-
 ;; This file controls what Doom modules are enabled and what order they load
 ;; in. Remember to run 'doom sync' after modifying it!
 
@@ -13,7 +12,10 @@
 ;;
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
-
+;;
+(setq package-archives '(("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                         ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 (doom! :input
        ;;chinese
        ;;japanese

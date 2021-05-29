@@ -10,6 +10,12 @@
       user-mail-address "liu.bian.shi@gmail.com")
 (setq doom-localleader-key ";")
 (setq doom-localleader-alt-key "M-;")
+(add-to-list 'display-buffer-alist
+        '("^\\*R"
+         (display-buffer-reuse-window display-buffer-at-bottom)
+         (window-width . 0.5)
+         (reusable-frames . nil)))
+
 
 (setq-default
     delete-by-moving-to-trash t        ; Delete files to trash
@@ -266,7 +272,7 @@
 
 ;; markdown
 (setq grip-preview-use-webkit t)
-(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown+r-mode))
+(add-to-list 'auto-mode-alist '("\\.[Rr]md\\'" . poly-markdown+r-mode))
 
 ;; Elfeed Config
 ;;
@@ -490,7 +496,7 @@
 
 ;; deft
 (setq deft-directory "~/Documents/deft"
-      deft-extensions '("org" "md" "Rmd" "txt")
+      deft-extensions '("org" "md" "Rmd" "rmd" "txt")
       deft-recursive t)
 
 ;; evil-pinyin
@@ -501,3 +507,5 @@
 
   :config
   (global-evil-pinyin-mode))
+
+;; ess config

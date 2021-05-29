@@ -232,6 +232,7 @@
   (org-roam-mode +1)
   )
 (add-hook 'after-init-hook 'org-roam-mode)
+(add-hook 'org-mode-hook #'valign-mode)
 
 (use-package! org-roam-server
   :config
@@ -273,6 +274,7 @@
 ;; markdown
 (setq grip-preview-use-webkit t)
 (add-to-list 'auto-mode-alist '("\\.[Rr]md\\'" . poly-markdown+r-mode))
+(add-hook 'markdown-mode-hook #'valign-mode)
 
 ;; Elfeed Config
 ;;

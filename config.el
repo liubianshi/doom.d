@@ -153,7 +153,7 @@
        (let ((string (buffer-substring (point) (max (line-beginning-position) (- (point) 80)))))
          (string-match-p "[=~`@<$]$" string))))
 (defun rime-predicate-tex-math-or-command-lbs-p ()
-  (and (derived-mode-p 'tex-mode 'markdown-mode 'ess-r-mode)
+  (and (derived-mode-p 'tex-mode 'markdown-mode)
        (or (and (featurep 'tex-site)
                 (texmathp))
            (and rime--current-input-key
@@ -164,8 +164,8 @@
                     (rime-predicate-after-ascii-char-p)))
            (and (> (point) (save-excursion (back-to-indentation) (point)))
                 (let ((string (buffer-substring (point) (max (line-beginning-position) (- (point) 80)))))
-                  (or (string-match-p "[\x5c][\x21-\x24\x26-\x7e]*$" string)
-                      (string-match-p "[\x5c][a-zA-Z\x23\x40]+[\x7b][^\x7d\x25]*$" string)))))))
+                  (or (string-match-p "[\x5c][\x21-\x24\x26-\x59\x61\x7e]*$" string)
+                      (string-match-p "[\x5c][a-zA-Z\x23\x40]+[\x7b][^\x7d\x25\x60]*$" string)))))))
 
 (setq rime-show-candidate 'posframe)
 (setq rime-posframe-style 'horizontal)
@@ -184,7 +184,7 @@
         rime-predicate-after-alphabet-char-p
         rime-predicate-space-after-cc-p
         rime-predicate-punctuation-after-space-cc-p
-        rime-predicate-tex-math-or-command-lbs-p
+        rime-predicate-tex-math-or-command-p
         rime-predicate-space-after-lbs-p))
 (map! :desc "Toggle Input Method" "<f12>" #'toggle-input-method)
 (map! :map rime-active-mode-map "<tab>" #'rime-inline-ascii)
@@ -206,12 +206,12 @@
   (add-to-list 'org-capture-templates
              '("i" "ideas collected" entry
                (file +org-capture-ideas-file)
-               "*  %^{heading} %t %^g\n %?\n" :prepend t))
+               "*  %^{heading} %t %^g\n %?\n" :prepend t :empty-lines 1))
   (add-to-list 'org-capture-templates
                 '("k" "Quesion Solved" entry
                 (file +org-capture-question-file)
                 "* TODO %^{Question} %t %^g\n\n** Description\n %?\n\n** Solved Method\n\n** Problem Solving Process\n"
-                :prepend t)))
+                :prepend t :empty-lines 1)))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -511,3 +511,6 @@
   (global-evil-pinyin-mode))
 
 ;; ess config
+(use-package! ess
+  :config
+  (setq comint-move-point-for-output t))

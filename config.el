@@ -151,7 +151,7 @@
   "If cursor is after a whitespace which follow a non-ascii character."
   (and (> (point) (save-excursion (back-to-indentation) (point)))
        (let ((string (buffer-substring (point) (max (line-beginning-position) (- (point) 80)))))
-         (string-match-p "[=~`@<$]$" string))))
+         (string-match-p "[=~`@<$.!]$" string))))
 (defun rime-predicate-tex-math-or-command-lbs-p ()
   (and (derived-mode-p 'tex-mode 'markdown-mode)
        (or (and (featurep 'tex-site)
@@ -263,12 +263,12 @@
                  :unnarrowed t))
   (add-to-list 'org-roam-capture-ref-templates
                '("a" "Annotation" plain (function org-roam-capture--get-point)
-                 "%U ${body}\n"
+                 "\n%U ${body}\n"
                  :file-name "${slug}"
-                 :head "#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_ALIAS:\n"
+                 :head "#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_ALIAS:\n\n"
                  :immediate-finish t
                  :unnarrowed t
-                 :empty-lines 1))
+                 :empty-lines 0))
 )
 
 ;; markdown

@@ -58,6 +58,7 @@
 (package! ado-mode)
 (package! org-roam-server)
 (package! evil-pinyin)
+(package! pandoc-mode)
 (package! valign :recipe
   (:host github
    :repo "casouri/valign"

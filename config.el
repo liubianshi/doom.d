@@ -186,7 +186,7 @@
         rime-predicate-punctuation-after-space-cc-p
         rime-predicate-tex-math-or-command-p
         rime-predicate-space-after-lbs-p))
-(map! :desc "Toggle Input Method" "<f12>" #'toggle-input-method)
+(map! :desc "Toggle Input Method" "<next>" #'toggle-input-method)
 (map! :map rime-active-mode-map "<tab>" #'rime-inline-ascii)
 (map! :n "j"  #'evil-next-visual-line
       :n "k"  #'evil-previous-visual-line
@@ -263,7 +263,7 @@
                  :unnarrowed t))
   (add-to-list 'org-roam-capture-ref-templates
                '("a" "Annotation" plain (function org-roam-capture--get-point)
-                 "\n%U ${body}\n"
+                 "%U ${body}\n"
                  :file-name "${slug}"
                  :head "#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_ALIAS:\n\n"
                  :immediate-finish t
@@ -275,6 +275,7 @@
 (setq grip-preview-use-webkit t)
 (add-to-list 'auto-mode-alist '("\\.[Rr]md\\'" . poly-markdown+r-mode))
 (add-hook 'markdown-mode-hook #'valign-mode)
+(add-hook 'markdown-mode-hook #'pandoc-mode)
 
 ;; Elfeed Config
 ;;
@@ -497,9 +498,15 @@
   (global-fasd-mode 1))
 
 ;; deft
-(setq deft-directory "~/Documents/deft"
-      deft-extensions '("org" "md" "Rmd" "rmd" "txt")
-      deft-recursive t)
+(after! deft
+  (setq deft-directory "~/Documents/deft"
+        deft-extensions '("org" "md" "Rmd" "rmd" "txt")
+        deft-use-filename-as-title nil
+        deft-use-filter-string-for-filename nil
+        deft-file-naming-rules '((noslash . "-")
+                                 (nospace . "-")
+                                 (case-fn . downcase))
+        deft-recursive t))
 
 ;; evil-pinyin
 (use-package! evil-pinyin

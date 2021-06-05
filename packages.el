@@ -59,7 +59,11 @@
 (package! org-roam-server)
 (package! evil-pinyin)
 (package! pandoc-mode)
-(package! valign :recipe
-  (:host github
-   :repo "casouri/valign"
-   :files ("valign.el")))
+(package! valign :recipe (:host github :repo "casouri/valign" :files ("valign.el")))
+(package! org-ref)
+(package! bibtex-completion)
+(package! ivy-bibtex)
+(package! helm-bibtex)
+(package! org-roam-bibtex :recipe (:host github :repo "org-roam/org-roam-bibtex"))
+(unpin! org-roam)
+(unpin! bibtex-completion helm-bibtex ivy-bibtex)

@@ -22,7 +22,7 @@
        company             ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ivy                 ; a search engine for love and life
+       (ivy +fuzzy +icons)                 ; a search engine for love and life
 
        :ui
        deft                     ; notational velocity for Emacs
@@ -48,12 +48,12 @@
        vi-tilde-fringe          ; fringe tildes to mark beyond EOB
        window-select            ; visually switch windows
        workspaces               ; tab emulation, persistence & separate workspaces
-       zen                      ; distraction-free coding or writing
+       ;;zen                      ; distraction-free coding or writing
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       ;(format)  ; automated prettiness
+       (format)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        multiple-cursors  ; editing in many places at once
@@ -78,8 +78,8 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       (spell +flyspell) ; tasing you for misspelling mispelling
-       grammar           ; tasing grammar mistake every you make
+       ;; (spell +flyspell) ; tasing you for misspelling mispelling
+       ;; grammar           ; tasing grammar mistake every you make
 
        :tools
        ;;ansible
@@ -91,8 +91,8 @@
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
        (lookup +dictionary +docsets) ; navigate your code and its documentation
-       lsp
-       ;(magit +forge)             ; a git porcelain for Emacs
+       ;; lsp
+       ;;(magit +forge)             ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
        pass              ; password manager for nerds
        pdf               ; pdf enhancements
@@ -128,7 +128,7 @@
        ;;fsharp            ; ML stands for Microsoft's Language
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
        ;;gdscript          ; the language you waited for
-       (go +lsp)         ; the hipster dialect
+       ;; (go +lsp)         ; the hipster dialect
        ;;(haskell +dante)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on

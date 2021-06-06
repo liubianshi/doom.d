@@ -23,16 +23,22 @@
         ":URL: ${url}\n"
         ":END:\n\n"))
 
+(setq bibtex-completion-pdf-open-function
+  (lambda (fpath)
+    (call-process "zathurZongEtAl2012_05_71a" nil 0 nil fpath)))
+
 ;; (defun bibtex-completion-open-pdf-external (keys &optional fallback-action)
 ;;   (let ((bibtex-completion-pdf-open-function
-;;          (lambda (fpath) (start-process "evince" "*helm-bibtex-evince*" "/usr/bin/evince" fpath))))
+;;          (lambda (fpath) (start-process "zathura" "*helm-bibtex-evince*" "/usr/bin/zathura" fpath))))
 ;;     (bibtex-completion-open-pdf keys fallback-action)))
 
 ;; (ivy-bibtex-ivify-action bibtex-completion-open-pdf-external ivy-bibtex-open-pdf-external)
 
 ;; (ivy-add-actions
 ;;  'ivy-bibtex
-;;  '(("P" ivy-bibtex-open-pdf-external "Open PDF file in external viewer (if present)")))
+;;  '(("p" ivy-bibtex-open-any "Open PDF, URL, or DOI")
+;;    ("e" ivy-bibtex-edit-notes "Edit Notes")
+;;    ("P" ivy-bibtex-open-pdf-external "Open PDF file in external viewer (if present)")))
 
 ;; (setq bibtex-completion-format-citation-functions
 ;;   '((org-mode      . bibtex-completion-format-citation-org-link-to-PDF)

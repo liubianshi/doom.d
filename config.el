@@ -10,6 +10,9 @@
       +lbs/pdf-paper-lib (expand-file-name "Zotero/AttachStorage/" (getenv "NUTSTORE"))
 )
 
+(setq doom-localleader-key ";"
+      doom-localleader-alt-key "M-;")
+
 ;; 加载其自定义文件
 (load! "+basic")
 (load! "+window")

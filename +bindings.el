@@ -1,7 +1,4 @@
 ;;; $DOOMDIR/+bindings.el -*- lexical-binding: t; -*-
-(setq doom-localleader-key ";"
-      doom-localleader-alt-key "M-;")
-
 (map! :n "j"  #'evil-next-visual-line
       :n "k"  #'evil-previous-visual-line
       :n "gj" #'evil-next-line

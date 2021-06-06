@@ -1,33 +1,35 @@
 ;;; $DOOMDIR/+org-roam-bibtex.el -*- lexical-binding: t; -*-
 (use-package! org-roam-bibtex
-  :after (org-roam)
+  :after org-roam
   :load-path (+lbs/bibtex-lib)
   :hook (org-roam-mode . org-roam-bibtex-mode)
-  :bind (:map org-mode-map
-         (("C-c n a" . orb-note-actions)))
-  :config
-  (setq orb-templates
-        '(("r" "ref" plain (function org-roam-capture--get-point) ""
-           :file-name "PaperNote/${citekey}"
-           :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n"
-           :unnarrowed t)))
-  (setq org-roam-bibtex-preformat-keywords '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
-  (setq orb-preformat-keywords '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"))
-  )
+  :config (require 'org-ref))
 
+(setq orb-preformat-keywords
+      '("citekey" "title" "url" "file" "author-or-editor" "keywords" "year" "journal" "abstract"))
 (setq orb-templates
-      '(("n" "ref+noter" plain (function org-roam-capture--get-point)
+      '(("r" "refnote" plain (function org-roam-capture--get-point)
          ""
-         :file-name "${slug}"
-         :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_TAGS:
-
-- tags ::
-- keywords :: ${keywords}
-\* ${title}
+         :file-name "PaperNote/${citekey}"
+         :head "#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n+ROAM_ALIAS:\n#+ROAM_TAGS: %?\n
+\n* 文献概述
 :PROPERTIES:
-:Custom_ID: ${citekey}
-:URL: ${url}
+:Journal: ${journal}
+:Year: ${year}
 :AUTHOR: ${author-or-editor}
-:NOTER_DOCUMENT: %(orb-process-file-field \"${citekey}\")
-:NOTER_PAGE:
-:END:")))
+:URL: ${url}
+:DOI: ${doi}
+:END:
+
+${abstract}
+
+** 研究内容
+
+** 结论和观点
+
+** 研究方法和数据来源
+
+* 文献评价
+
+* 内容摘录\n"
+         :unnarrowed t)))

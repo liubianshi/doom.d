@@ -27,9 +27,9 @@
      ("INPROGRESS" :foreground "#0098dd" :weight normal :underline t)
      ("DONE" :foreground "#50a14f" :weight normal :underline t)
      ("CANCELLED" :foreground "#ff6480" :weight normal :underline t))
-   org-priority-faces '((65 :foreground "#e45649")
-                        (66 :foreground "#da8548")
-                        (67 :foreground "#0098dd"))
+   ;; org-priority-faces '((65 :foreground "#e45649")
+   ;;                      (66 :foreground "#da8548")
+   ;;                      (67 :foreground "#0098dd"))
    ))
 ;; org-babel
 (org-babel-do-load-languages

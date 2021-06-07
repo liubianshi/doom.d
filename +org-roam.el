@@ -93,19 +93,19 @@
                '("n" "Normal" plain (function org-roam-capture--get-point)
                  "%?"
                  :file-name "%<%Y%m%d%H%M%S>-${slug}"
-                 :head "#+title: ${title}\n#+roam_alias:\n\n#+roam_tags: \n\n"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_tags: \n\n"
                  :unnarrowed t ))
   (add-to-list 'org-roam-capture-templates
                '("i" "ideas" plain (function org-roam-capture--get-point)
                  "%?"
                  :file-name "Ideas/%<%Y%m%d%H%M%S>-${slug}"
-                 :head "#+title: ${title}\n#+roam_alias:\n\n#+roam_tags: \n\n"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_tags: \n\n"
                  :unnarrowed t ))
   (add-to-list 'org-roam-capture-ref-templates
                '("a" "Annotation" plain (function org-roam-capture--get-point)
-                 "%U ${body}\n"
+                 "* %^{heading} %t %^g\n ${body}\n\n"
                  :file-name "Digest/%<%Y%m%d%H%M%S>-${slug}"
-                 :head "#+title: ${title}\n#+roam_key: ${ref}\n#+roam_alias:\n\n"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_key: ${ref}\n\n"
                  :immediate-finish t
                  :unnarrowed t
                  :empty-lines 0)))

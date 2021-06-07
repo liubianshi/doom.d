@@ -6,27 +6,25 @@
   :config (require 'org-ref))
 
 (setq orb-preformat-keywords
-      '("citekey" "title" "url" "file" "author-or-editor" "keywords" "year" "journal" "abstract"))
+      '("citekey" "title" "url" "file" "author-or-editor" "keywords" "year" "doi" "journal" "abstract"))
 (setq orb-templates
       '(("r" "refnote" plain (function org-roam-capture--get-point)
          ""
          :file-name "PaperNote/${citekey}"
-         :head "#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n+ROAM_ALIAS:\n#+ROAM_TAGS: %?\n
+         :head "#+title: ${title}\n#+roam_Alias:\n#+roam_key: ${ref}\n#+roam_tags: %?\n
 \n* 文献概述
 :PROPERTIES:
 :Journal: ${journal}
 :Year: ${year}
-:AUTHOR: ${author-or-editor}
-:URL: ${url}
-:DOI: ${doi}
+:Author: ${author-or-editor}
+:Url: ${url}
+:Doi: ${doi}
 :END:
 
 ${abstract}
 
 ** 研究内容
-
 ** 结论和观点
-
 ** 研究方法和数据来源
 
 * 文献评价

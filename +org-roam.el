@@ -81,19 +81,31 @@
                '("t" "Term" plain (function org-roam-capture--get-point)
                  "+ 领域: %^{术语所属领域}\n+ 释义: %?\n"
                  :file-name "Term/%<%Y%m%d%H%M%S>-${slug}"
-                 :head "#+TITLE: ${title}\n#+ROAM_ALIAS:\n#+ROAM_TAGS: \n\n"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_tags: \n\n"
                  :unnarrowed t))
   (add-to-list 'org-roam-capture-templates
                '("p" "Paper" plain (function org-roam-capture--get-point)
                  ""
                  :file-name "PaperNote/%<%Y%m%d%H%M%S>-${slug}"
-                 :head "#+TITLE: ${title}\n#+AUTHOR:\n#+ROAM_ALIAS:\n#+ROAM_TAGS: \n\nCitation: \n\n* 文献评价\n\n* 研究内容\n%?\n\n* 结论和观点\n\n* 研究方法和数据来源\n\n* 内容摘录\n"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+author:\n#+roam_tags: \n\ncitation: \n\n* 文献评价\n\n* 研究内容\n%?\n\n* 结论和观点\n\n* 研究方法和数据来源\n\n* 内容摘录\n"
                  :unnarrowed t))
+  (add-to-list 'org-roam-capture-templates
+               '("n" "Normal" plain (function org-roam-capture--get-point)
+                 "%?"
+                 :file-name "%<%Y%m%d%H%M%S>-${slug}"
+                 :head "#+title: ${title}\n#+roam_alias:\n\n#+roam_tags: \n\n"
+                 :unnarrowed t ))
+  (add-to-list 'org-roam-capture-templates
+               '("i" "ideas" plain (function org-roam-capture--get-point)
+                 "%?"
+                 :file-name "Ideas/%<%Y%m%d%H%M%S>-${slug}"
+                 :head "#+title: ${title}\n#+roam_alias:\n\n#+roam_tags: \n\n"
+                 :unnarrowed t ))
   (add-to-list 'org-roam-capture-ref-templates
                '("a" "Annotation" plain (function org-roam-capture--get-point)
                  "%U ${body}\n"
-                 :file-name "Digest/${slug}"
-                 :head "#+TITLE: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_ALIAS:\n\n"
+                 :file-name "Digest/%<%Y%m%d%H%M%S>-${slug}"
+                 :head "#+title: ${title}\n#+roam_key: ${ref}\n#+roam_alias:\n\n"
                  :immediate-finish t
                  :unnarrowed t
                  :empty-lines 0)))

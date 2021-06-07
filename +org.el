@@ -49,3 +49,12 @@
    org-noter-hide-other nil
    ;; Everything is relative to the main notes file
    org-noter-notes-search-path (list org-directory)))
+
+;; 让中文可以在不加空格的情况下使用行内格式
+;; https://emacs-china.org/t/orgmode/9740/12
+(setcar (nthcdr 0 org-emphasis-regexp-components) " \t('\"{[:nonascii:]")
+(setcar (nthcdr 1 org-emphasis-regexp-components) "- \t.,:!?;'\")}\\[[:nonascii:]")
+(org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
+(org-element-update-syntax)
+;; 规定上下标必须加 {}，否则中文使用下划线时它会以为是两个连着的下标
+(setq org-use-sub-superscripts "{}")

@@ -55,7 +55,7 @@
 (package! elfeed-dashboard)
 ;(package! ace-link)
 (package! fasd)
-(package! ado-mode)
+(package! ado-mode :recipe (:host github :repo "louabill/ado-mode"))
 (package! org-roam-server)
 (package! evil-pinyin)
 (package! pandoc-mode)

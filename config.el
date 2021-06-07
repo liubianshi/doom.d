@@ -13,6 +13,12 @@
 (setq doom-localleader-key ";"
       doom-localleader-alt-key "M-;")
 
+(setq auto-mode-alist
+      (append
+       '(("\\.\\(?:a?do\\|smcl\\)\\'" . ado-mode))
+       '(("\\.\\(?:md\\|markdown\\)\\'" . pandoc-mode))
+       auto-mode-alist))
+
 ;; 加载其自定义文件
 (load! "+basic")
 (load! "+window")
@@ -29,6 +35,8 @@
 (load! "+projectile")
 (load! "+evil-pinyin")
 (load! "+bindings")
+(load! "+stata")
+
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:

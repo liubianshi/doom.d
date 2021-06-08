@@ -101,6 +101,12 @@
                  :file-name "Ideas/%<%Y%m%d%H%M%S>-${slug}"
                  :head "#+title: ${title}\n#+roam_alias:\n#+roam_tags: \n\n"
                  :unnarrowed t ))
+  (add-to-list 'org-roam-capture-templates
+               '("o" "opinion" plain (function org-roam-capture--get-point)
+                 "* %^{heading} %t\nSource: "
+                 :file-name "Opinions/${slug}"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_tags: \n\n"
+                 :unnarrowed t ))
   (add-to-list 'org-roam-capture-ref-templates
                '("a" "Annotation" plain (function org-roam-capture--get-point)
                  "* %^{heading} %t %^g\n ${body}\n\n"
@@ -108,4 +114,21 @@
                  :head "#+title: ${title}\n#+roam_alias:\n#+roam_key: ${ref}\n\n"
                  :immediate-finish t
                  :unnarrowed t
-                 :empty-lines 0)))
+                 :empty-lines 0))
+  (add-to-list 'org-roam-capture-ref-templates
+               '("c" "Clipboard" plain (function org-roam-capture--get-point)
+                 "* %^{heading} %t %^g\n %[/tmp/org/roam-capture.org]\n\n"
+                 :file-name "Digest/%<%Y%m%d%H%M%S>-${slug}"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_key: ${ref}\n\n"
+                 :immediate-finish t
+                 :unnarrowed t
+                 :empty-lines 0))
+  (add-to-list 'org-roam-capture-templates
+               '("k" "Quesion Solved" plain (function org-roam-capture--get-point)
+                 ""
+                 :file-name "Question/%<%Y%m%d%H%M%S>-${slug}"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_tag: \n\n* Description\n%?"
+                 :immediate-finish t
+                 :unnarrowed t
+                 :empty-lines 0))
+  )

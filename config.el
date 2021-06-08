@@ -34,6 +34,7 @@
 (load! "+ess")
 (load! "+projectile")
 (load! "+evil-pinyin")
+(load! "+functions")
 (load! "+bindings")
 (load! "+stata")
 

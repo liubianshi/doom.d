@@ -1,2 +1,2 @@
 ;;; $DOOMDIR/+stata.el -*- lexical-binding: t; -*-
-(require 'ado-mode)
+(use-package! ado-mode)

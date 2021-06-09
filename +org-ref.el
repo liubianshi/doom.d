@@ -17,7 +17,7 @@
                   "Article"         ; name
                   entry             ; type
                   (file+headline (expand-file-name "paper.org" org-directory) "Article")  ; target
-                  "\* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
+                  "\* %^{Title} %^{org-set-tags}  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
                   :prepend t        ; properties
                   :empty-lines 1    ; properties
                   :created t        ; properties

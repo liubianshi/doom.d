@@ -16,18 +16,19 @@
   (defvar org-roam-directory nil)
   :init
   :config
-  (setq org-roam-directory (expand-file-name "../Knowledge" org-directory)
+  (setq org-roam-directory org-directory
+        org-roam-tag-sources '(vanilla last-directory)
         org-roam-graph-viewer "/usr/bin/xdg-open"
         org-roam-verbose nil
         org-roam-completion-system 'default)
   (map! :leader
         :prefix "r"
-        :desc "Org-Roam" "l" #'org-roam
-        :desc "Org-Roam-Insert" "i" #'org-roam-insert
-        :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
-        :desc "Org-Roam-Find"   "f" #'org-roam-find-file
-        :desc "org-roam-show-graph" "g" #'org-roam-show-graph
-        :desc "org-roam-capture" "c" #'org-roam-capture)
+        :desc "Org-Roam" "l"                    #'org-roam
+        :desc "Org-Roam-Insert" "i"             #'org-roam-insert
+        :desc "org-roam-switch-to-buffer" "b"   #'org-roam-switch-to-buffer
+        :desc "Org-Roam-Find"   "f"             #'org-roam-find-file
+        :desc "org-roam-show-graph" "g"         #'org-roam-show-graph
+        :desc "org-roam-capture" "c"            #'org-roam-capture)
 
   ;; Normally, the org-roam buffer doesn't open until you explicitly call
   ;; `org-roam'. If `+org-roam-open-buffer-on-find-file' is non-nil, the
@@ -80,14 +81,20 @@
   (add-to-list 'org-roam-capture-templates
                '("t" "Term" plain (function org-roam-capture--get-point)
                  "+ 领域: %^{术语所属领域}\n+ 释义: %?\n"
-                 :file-name "Term/%<%Y%m%d%H%M%S>-${slug}"
+                 :file-name "Term/${slug}"
                  :head "#+title: ${title}\n#+roam_alias:\n#+roam_tags: \n\n"
                  :unnarrowed t))
   (add-to-list 'org-roam-capture-templates
-               '("p" "Paper" plain (function org-roam-capture--get-point)
-                 ""
-                 :file-name "PaperNote/%<%Y%m%d%H%M%S>-${slug}"
-                 :head "#+title: ${title}\n#+roam_alias:\n#+author:\n#+roam_tags: \n\ncitation: \n\n* 文献评价\n\n* 研究内容\n%?\n\n* 结论和观点\n\n* 研究方法和数据来源\n\n* 内容摘录\n"
+               '("s" "Software" plain (function org-roam-capture--get-point)
+                 "%?"
+                 :file-name "Software/${slug}"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_tags: \n\n"
+                 :unnarrowed t))
+  (add-to-list 'org-roam-capture-templates
+               '("r" "Research" plain (function org-roam-capture--get-point)
+                 "%?"
+                 :file-name "ResearchProjects/${slug}"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_tags: \n\n"
                  :unnarrowed t))
   (add-to-list 'org-roam-capture-templates
                '("n" "Normal" plain (function org-roam-capture--get-point)
@@ -109,25 +116,25 @@
                  :unnarrowed t ))
   (add-to-list 'org-roam-capture-ref-templates
                '("a" "Annotation" plain (function org-roam-capture--get-point)
-                 "* %^{heading} %t %^g\n ${body}\n\n"
+                 "* %^{heading} %t\n${body}\n\n"
                  :file-name "Digest/%<%Y%m%d%H%M%S>-${slug}"
-                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_key: ${ref}\n\n"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_key: ${ref}\n#+roam_tags: %^g\n\n"
                  :immediate-finish t
                  :unnarrowed t
                  :empty-lines 0))
   (add-to-list 'org-roam-capture-ref-templates
                '("c" "Clipboard" plain (function org-roam-capture--get-point)
-                 "* %^{heading} %t %^g\n %[/tmp/org/roam-capture.org]\n\n"
+                 "* %^{heading} %t\n%[/tmp/org/roam-capture.org]\n\n"
                  :file-name "Digest/%<%Y%m%d%H%M%S>-${slug}"
-                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_key: ${ref}\n\n"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_key: ${ref}\n#+roam_tags: %^g\n\n"
                  :immediate-finish t
                  :unnarrowed t
                  :empty-lines 0))
   (add-to-list 'org-roam-capture-templates
                '("k" "Quesion Solved" plain (function org-roam-capture--get-point)
                  ""
-                 :file-name "Question/%<%Y%m%d%H%M%S>-${slug}"
-                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_tag: \n\n* Description\n%?"
+                 :file-name "Know-How/%<%Y%m%d%H%M%S>-${slug}"
+                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_tags: \n\n* Description\n%?"
                  :immediate-finish t
                  :unnarrowed t
                  :empty-lines 0))

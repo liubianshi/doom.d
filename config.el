@@ -5,7 +5,7 @@
 (setq user-full-name "Liubianshi"
       user-mail-address "liu.bian.shi@gmail.com"
       ;org-directory (or (getenv "ORG_LIB") "~/Documents/Writing/Note-Org/")
-      org-directory "~/Documents/Writing/Note-Org/"
+      org-directory "~/Documents/Writing/"
       +lbs/bibtex-lib (or (getenv "BIBTEX_LIB") "~/Documents/paper_ref.bib")
       +lbs/pdf-paper-lib (expand-file-name "Zotero/AttachStorage/" (getenv "NUTSTORE"))
 )

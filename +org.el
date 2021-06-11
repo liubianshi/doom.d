@@ -2,9 +2,9 @@
 
 ;; org-mode
 (defun +org-capture-ideas-file ()
-  (expand-file-name "ideas.org" org-directory))
+  (expand-file-name "Ideas/ideas.org" org-directory))
 (defun +org-capture-question-file ()
-  (expand-file-name "question-solving.org" org-directory))
+  (expand-file-name "Know-How/question-solving.org" org-directory))
 (after! org
   (add-to-list 'org-capture-templates
              '("i" "ideas collected" entry
@@ -20,17 +20,31 @@
 (use-package! org
   :config
   (setq
-  ; org-bullets-bullet-list '("⁖")
+   org-bullets-bullet-list '("⁖")
    org-todo-keyword-faces
-   '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
-     ("WAITING" :foreground "#9f7efe" :weight normal :underline t)
+   '(("TODO"       :foreground "#7c7c75" :weight normal :underline t)
+     ("WAITING"    :foreground "#9f7efe" :weight normal :underline t)
      ("INPROGRESS" :foreground "#0098dd" :weight normal :underline t)
-     ("DONE" :foreground "#50a14f" :weight normal :underline t)
-     ("CANCELLED" :foreground "#ff6480" :weight normal :underline t))
-   ;; org-priority-faces '((65 :foreground "#e45649")
-   ;;                      (66 :foreground "#da8548")
-   ;;                      (67 :foreground "#0098dd"))
+     ("DONE"       :foreground "#50a14f" :weight normal :underline t)
+     ("CANCELLED"  :foreground "#ff6480" :weight normal :underline t))
+   org-priority-faces '((65 :foreground "#e45649")
+                        (66 :foreground "#da8548")
+                        (67 :foreground "#0098dd"))
+   org-tag-alist '((:startgroup . nil)
+                   ("@Work"    . ?w)
+                   ("@Private" . ?p)
+                   (:endgroup . nil)
+                   ("@Bookmarks" . ?b)
+                   ("@Case" . ?c)
+                   ("@Data" . ?d)
+                   ("@Event" . ?e)
+                   ("@Funny" . ?f)
+                   ("@Institution" . ?i)
+                   ("@Motto" . ?m)
+                   ("@Research" . ?r)
+                   ("@Speech" . ?s))
    ))
+
 ;; org-babel
 (org-babel-do-load-languages
  'org-babel-load-languages

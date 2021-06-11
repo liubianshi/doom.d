@@ -4,6 +4,9 @@
       :n "gj" #'evil-next-line
       :n "gk" #'evil-previous-line)
 
+(map! :leader
+      :n :desc "counsel-rg" "ss" #'counsel-rg)
+
 (map! :map evil-window-map
       "SPC" #'rotate-layout
       ;; Navigation

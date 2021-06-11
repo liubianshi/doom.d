@@ -11,14 +11,14 @@
          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
          org-ref-notes-function 'orb-edit-notes))
 
-(after! org
-  (add-to-list 'org-capture-templates
-               '(("a"               ; key
-                  "Article"         ; name
-                  entry             ; type
-                  (file+headline (expand-file-name "paper.org" org-directory) "Article")  ; target
-                  "\* %^{Title} %^{org-set-tags}  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
-                  :prepend t        ; properties
-                  :empty-lines 1    ; properties
-                  :created t        ; properties
-))))
+;; (after! org
+;;   (add-to-list 'org-capture-templates
+;;                '(("a"               ; key
+;;                   "Article"         ; name
+;;                   entry             ; type
+;;                   (file+headline (expand-file-name "paper.org" org-directory) "Article")  ; target
+;;                   "\* %^{Title} %^{org-set-tags}  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
+;;                   :prepend t        ; properties
+;;                   :empty-lines 1    ; properties
+;;                   :created t        ; properties
+;; ))))

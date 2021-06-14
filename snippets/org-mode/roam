@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: roam-header
+# key: roam
+# uuid: roam-head
+# --
+
+#+title: ${1:`(file-name-base (or load-file-name buffer-file-name))`}
+#+date: `(format-time-string "%Y-%m-%d %H:%M")`
+#+roam_alias: 
+#+roam_key: 
+#+roam_tags: 
+
+

@@ -19,6 +19,10 @@
        '(("\\.\\(?:md\\|markdown\\)\\'" . pandoc-mode))
        auto-mode-alist))
 
+;; 网络代理
+(setq url-gateway-method 'socks)
+(setq socks-server '("Default server" "127.0.0.1" 1081 5))
+
 ;; 加载其自定义文件
 (load! "+basic")
 (load! "+window")

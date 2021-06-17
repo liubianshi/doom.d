@@ -12,6 +12,8 @@
 
 (setq doom-localleader-key ";"
       doom-localleader-alt-key "M-;")
+(setq select-enable-clipboard t
+      select-enable-primary t)
 
 (setq auto-mode-alist
       (append
@@ -41,6 +43,7 @@
 (load! "+functions")
 (load! "+bindings")
 (load! "+stata")
+(load! "+anki")
 
 
 

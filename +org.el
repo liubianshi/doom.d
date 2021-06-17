@@ -5,7 +5,27 @@
   (expand-file-name "Ideas/ideas.org" org-directory))
 (defun +org-capture-question-file ()
   (expand-file-name "Know-How/question-solving.org" org-directory))
+(defun +org-capture-anki-file ()
+  (expand-file-name
+   (format-time-string "DailyNote-%Y%m%d.org" (current-time))
+   (expand-file-name "Anki" org-directory)))
+
+
 (after! org
+  (add-to-list 'org-capture-templates
+               '("a" "Daily Note needed remember"
+                 entry
+                 (file +org-capture-anki-file)
+                 "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:ANKI_DECK: Mega\n:END:\n** Text\n%x\n** Extra\n"
+                 :prepend t
+                 :empty-lines 1))
+  (add-to-list 'org-capture-templates
+               '("A" "Daily Note needed remember (cloze)"
+                 entry
+                 (file +org-capture-anki-file)
+                 "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:ANKI_DECK: DailyNote\n:END:\n** Front\n%?\n** Back\n%x\n"
+                 :prepend t
+                 :empty-lines 1))
   (add-to-list 'org-capture-templates
              '("i" "ideas collected" entry
                (file +org-capture-ideas-file)

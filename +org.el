@@ -13,10 +13,9 @@
 
 (after! org
   (add-to-list 'org-capture-templates
-               '("a" "Daily Note needed remember"
-                 entry
+               '("a" "Daily Note needed remember" entry
                  (file +org-capture-anki-file)
-                 "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:ANKI_DECK: Mega\n:END:\n** Text\n%x\n** Extra\n"
+                 "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Basic\n:ANKI_DECK: DailyNote\n:END:\n** Front\n%x\n** Back\n"
                  :prepend t
                  :empty-lines 1))
   (add-to-list 'org-capture-templates
@@ -54,6 +53,7 @@
                    ("@Work"    . ?w)
                    ("@Private" . ?p)
                    (:endgroup . nil)
+                   ("@Remember" . ?b)
                    ("@Bookmarks" . ?b)
                    ("@Case" . ?c)
                    ("@Data" . ?d)

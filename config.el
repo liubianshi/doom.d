@@ -18,7 +18,6 @@
 (setq auto-mode-alist
       (append
        '(("\\.\\(?:a?do\\|smcl\\)\\'" . ado-mode))
-       '(("\\.\\(?:md\\|markdown\\)\\'" . pandoc-mode))
        auto-mode-alist))
 
 ;; 网络代理

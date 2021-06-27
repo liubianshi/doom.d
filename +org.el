@@ -30,10 +30,10 @@
                (file +org-capture-ideas-file)
                "*  %^{heading} %t %^g\n %?\n" :prepend t :empty-lines 1))
   (add-to-list 'org-capture-templates
-                '("k" "Quesion Solved" entry
-                (file +org-capture-question-file)
-                "* TODO %^{Question} %t %^g\n\n** Description\n %?\n\n** Solved Method\n\n** Problem Solving Process\n"
-                :prepend t :empty-lines 1)))
+                '("k" "Collect terms" table-line (file "~/Documents/Writing/term.org")
+                "| %^{term} | %^{desc} | %^{Shorthand} |"
+                :prepend 0
+                :empty-lines 0)))
 
 ;; Org Bullets
 (use-package! org

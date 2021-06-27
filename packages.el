@@ -69,3 +69,4 @@
 (unpin! bibtex-completion helm-bibtex ivy-bibtex)
 (package! anki-editor)
 (package! berrys-theme)
+(package! youdao-dictionary)

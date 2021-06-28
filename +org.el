@@ -68,8 +68,15 @@
 ;; org-babel
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((stata . t)
-   (r . t)))
+ '((lisp . t)
+   (emacs-lisp . t)
+   (ditaa . t)
+   (dot . t)
+   (lua . t)
+   (R . t)
+   (sh . t)
+   (python. t)
+   (perl . t)))
 
 ;; Org Noter
 (use-package! org-noter

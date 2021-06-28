@@ -75,7 +75,7 @@
     (interative)
     (org-roam-server-mode 1)
     (browser-url-xdg-open (format "http://localhost:%d" org-roam-server-port))))
-(after! org-roam (org-roam-server-mode))
+;; (after! org-roam (org-roam-server-mode))
 
 (after! org-roam
   (add-to-list 'org-roam-capture-templates

@@ -125,7 +125,7 @@
   (add-to-list 'org-roam-capture-ref-templates
                '("c" "Clipboard" plain (function org-roam-capture--get-point)
                  "* %^{heading} %t\n%[/tmp/org/roam-capture.org]\n\n"
-                 :file-name "Digest/%<%Y%m%d%H%M%S>-${slug}"
+                 :file-name "Digest/%<%Y%m%d>-${slug}"
                  :head "#+title: ${title}\n#+roam_alias:\n#+roam_key: ${ref}\n#+roam_tags: %^g\n\n"
                  :immediate-finish t
                  :unnarrowed t

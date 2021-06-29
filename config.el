@@ -9,7 +9,6 @@
       +lbs/bibtex-lib (or (getenv "BIBTEX_LIB") "~/Documents/paper_ref.bib")
       +lbs/pdf-paper-lib (expand-file-name "Zotero/AttachStorage/" (getenv "NUTSTORE"))
 )
-
 (setq doom-localleader-key ";"
       doom-localleader-alt-key "M-;")
 (setq select-enable-clipboard t
@@ -38,6 +37,7 @@
 (load! "+fasd")
 (load! "+ess")
 (load! "+projectile")
+(load! "+fold.el")
 (load! "+evil-pinyin")
 (load! "+functions")
 (load! "+bindings")

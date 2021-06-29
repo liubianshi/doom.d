@@ -70,3 +70,4 @@
 (package! anki-editor)
 (package! berrys-theme)
 (package! youdao-dictionary)
+(package! origami :recipe (:host github :repo "gregsexton/origami.el"))

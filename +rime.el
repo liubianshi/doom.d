@@ -22,7 +22,7 @@
 (setq rime-show-candidate 'posframe)
 (setq rime-posframe-style 'horizontal)
 (setq rime-posframe-properties
-      (list :font "FiraCode Nerd Font-12"
+      (list :font "WenQuanYi Micro Hei Mono"
             :background-color "#333333"
             :foreground-color "#dcdccc"
             :internal-border-width 6))

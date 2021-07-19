@@ -12,6 +12,15 @@
 
 
 (after! org
+  (defun insert-zero-width-space()
+    (interactive)
+    (insert "​"))
+
+  (map! :map org-mode-map
+        :leader
+        :prefix "<space>"
+        :desc "Insert Zero Space Width" "0" #'insert-zero-width-space)
+
   (add-to-list 'org-capture-templates
                '("a" "Daily Note needed remember" entry
                  (file +org-capture-anki-file)

@@ -30,7 +30,11 @@
                (file +org-capture-ideas-file)
                "*  %^{heading} %t %^g\n %?\n" :prepend t :empty-lines 1))
   (add-to-list 'org-capture-templates
-                '("k" "Collect terms" table-line (file "~/Documents/Writing/term.org")
+             '("k" "Questiong Solved" entry
+               (file +org-capture-question-file)
+               "*  %^{heading} %t %^g\n %?\n" :prepend t :empty-lines 1))
+  (add-to-list 'org-capture-templates
+                '("c" "Collect terms" table-line (file "~/Documents/Writing/term.org")
                 "| %^{term} | %^{desc} | %^{Shorthand} |"
                 :prepend 0
                 :empty-lines 0)))
@@ -99,3 +103,4 @@
 (org-element-update-syntax)
 ;; 规定上下标必须加 {}，否则中文使用下划线时它会以为是两个连着的下标
 (setq org-use-sub-superscripts "{}")
+

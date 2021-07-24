@@ -4,7 +4,7 @@
 
   (setq current-file-path     (or load-file-name buffer-file-name)
         current-file-basename (file-name-base current-file-path)
-        current-file-ext      (file-name-extension current-file-path)
+        current-file-ext      (or (file-name-extension current-file-path) "org")
         current-file-dir      (file-name-directory current-file-path)
         target-image-dir      (expand-file-name ".asset/" current-file-dir)
         target-image-default  (format-time-string "screenshot%Y%m%d%H%M%S.png" (current-time))

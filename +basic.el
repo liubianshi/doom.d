@@ -81,7 +81,7 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq doom-font (font-spec :family "Fira Code iCursive S12" :size 27)
-      doom-variable-pitch-font (font-spec :family "TsangerJinKai01-9128 W03" :size 28)
+      doom-variable-pitch-font (font-spec :family "Sarasa Fixed Slab SC" :size 28)
       doom-unicode-font (font-spec :family "monospace" :size 28)
       doom-serif-font (font-spec :family "Noto Serif CJK SC" :size 28)
       doom-big-font (font-spec :family "Sans" :size 32))
@@ -96,7 +96,7 @@
             (dolist (charset '(kana han symbol cjk-misc bopomofo))
                 (set-fontset-font (frame-parameter nil 'font)
                     charset
-                    (font-spec :family "TsangerJinKai01-9128 W03" :size 28))))))
+                    (font-spec :family "Sarasa Fixed Slab SC" :size 28))))))
 
 (defun +my|init-font(frame)
   (with-selected-frame frame

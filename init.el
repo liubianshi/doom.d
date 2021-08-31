@@ -153,10 +153,11 @@
         ;;+jupyter
         +journal
         +pandoc
-        +gnuplot
+        ;;+gnuplot
         ;;+pomodoro
         +present
-        +roam)             ; organize your plain life in plain text
+        +roam
+        )             ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional

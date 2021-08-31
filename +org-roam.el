@@ -47,7 +47,8 @@
   ;; makes it easier to distinguish among other org buffers.
   (add-hook 'org-roam-buffer-prepare-hook #'hide-mode-line-mode)
 
-  (org-roam-mode +1))
+  ;;(org-roam-mode +1)
+  )
 
 ;; Since the org module lazy loads org-protocol (waits until an org URL is
 ;; detected), we can safely chain `org-roam-protocol' to it.
@@ -55,27 +56,6 @@
 
 (add-hook 'after-init-hook 'org-roam-mode)
 (add-hook 'org-mode-hook #'valign-mode)
-
-(use-package! org-roam-server
-  :after org-roam
-  :config
-  (setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 9090
-        org-roam-server-authenticate nil
-        org-roam-server-export-inline-images t
-        org-roam-server-serve-files nil
-        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
-        org-roam-server-network-poll t
-        org-roam-server-network-arrows nil
-        org-roam-server-network-label-truncate t
-        org-roam-server-network-label-truncate-length 60
-        org-roam-server-network-label-wrap-length 20)
-  (defun org-roam-server-open ()
-    "Ensure the server is active, then open the roam graph."
-    (interative)
-    (org-roam-server-mode 1)
-    (browser-url-xdg-open (format "http://localhost:%d" org-roam-server-port))))
-;; (after! org-roam (org-roam-server-mode))
 
 (after! org-roam
   (add-to-list 'org-roam-capture-templates
@@ -139,3 +119,26 @@
                  :unnarrowed t
                  :empty-lines 0))
   )
+
+;(use-package! org-roam-server
+  ;:ensure t
+  ;:config
+  ;(setq org-roam-server-host "127.0.0.1"
+        ;org-roam-server-port 9090
+        ;org-roam-server-authenticate nil
+        ;org-roam-server-export-inline-images t
+        ;org-roam-server-serve-files nil
+        ;org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        ;org-roam-server-network-poll t
+        ;org-roam-server-network-arrows nil
+        ;org-roam-server-network-label-truncate t
+        ;org-roam-server-network-label-truncate-length 60
+        ;org-roam-server-network-label-wrap-length 20)
+ ;;;  (defun org-roam-server-open ()
+ ;;;    "Ensure the server is active, then open the roam graph."
+ ;;;    (interative)
+ ;;;    (org-roam-server-mode 1)
+ ;;;    (browser-url-xdg-open (format "http://localhost:%d" org-roam-server-port))))
+ ;;; (after! org-roam (org-roam-server-mode)
+ ;)
+

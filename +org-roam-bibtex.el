@@ -2,7 +2,7 @@
 (use-package! org-roam-bibtex
   :after org-roam
   :load-path (+lbs/bibtex-lib)
-  :hook (org-roam-mode . org-roam-bibtex-mode)
+  ;:hook (org-roam-mode . org-roam-bibtex-mode)
   :config (require 'org-ref))
 
 (setq orb-preformat-keywords

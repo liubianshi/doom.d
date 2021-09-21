@@ -106,10 +106,10 @@
                '("c" "Clipboard" plain (function org-roam-capture--get-point)
                  "* %^{heading} %t\n%[/tmp/org/roam-capture.org]\n\n"
                  :file-name "Digest/%<%Y%m%d>-${slug}"
-                 :head "#+title: ${title}\n#+roam_alias:\n#+roam_key: ${ref}\n#+roam_tags: %^g\n\n"
+                 :head "#+title: ${title}#+roam_alias:\n#+roam_key: ${ref}#+roam_tags: %^g\n\n"
                  :immediate-finish t
                  :unnarrowed t
-                 :empty-lines 0))
+                 :empty-lines 0))
   (add-to-list 'org-roam-capture-templates
                '("k" "Quesion Solved" plain (function org-roam-capture--get-point)
                  ""

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: begin_equation block
+# uuid: <m
+# key: <m
+# condition: t
+# --
+\begin{equation}
+`%`$0
+\end{equation}

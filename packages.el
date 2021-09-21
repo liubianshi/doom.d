@@ -64,6 +64,7 @@
 (package! valign :recipe (:host github :repo "casouri/valign" :files ("valign.el")))
 (package! bibtex-completion)
 (package! ivy-bibtex)
+(package! vimrc-mode)
 
 ;; org-roam-bibtex: https://github.com/org-roam/org-roam-bibtex
 (package! org-roam-bibtex :recipe (:host github :repo "org-roam/org-roam-bibtex"))

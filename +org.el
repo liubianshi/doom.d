@@ -113,3 +113,14 @@
 ;; 规定上下标必须加 {}，否则中文使用下划线时它会以为是两个连着的下标
 (setq org-use-sub-superscripts "{}")
 
+;; ox-pandoc settings
+;; (setq org-pandoc-format-extensions '(markdown+emoji+east_asian_line_breaks+autolink_bare_uris))
+;;      org-pandoc-options-for-latex-pdf '((defaults . "2tex"))
+;;      org-pandoc-options-for-beamer-pdf '((defaults . "2beamer"))
+;;      org-pandoc-options-for-docx '((defaults . "2docx"))
+;;      org-pandoc-options-for-html5 '((defaults . "2html"))
+;;      org-pandoc-options-for-html4 '((defaults . "2html"))
+;;      org-pandoc-options-for-odt '((defaults . "2odt"))
+;;      org-pandoc-options-for-pptx '((defaults . "2pptx"))
+
+(setq org-pandoc-format-extensions nil)

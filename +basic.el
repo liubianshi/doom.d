@@ -96,7 +96,7 @@
             (dolist (charset '(kana han symbol cjk-misc bopomofo))
                 (set-fontset-font (frame-parameter nil 'font)
                     charset
-                    (font-spec :family "Sarasa Fixed Slab SC" :size 28))))))
+                    (font-spec :family "TsangerJinKai01-9128 W03" :size 28))))))
 
 (defun +my|init-font(frame)
   (with-selected-frame frame

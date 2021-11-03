@@ -81,7 +81,7 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq doom-font (font-spec :family "JetBrains Mono" :size 27)
-      doom-variable-pitch-font (font-spec :family "Sarasa Fixed Slab SC" :size 28)
+      doom-variable-pitch-font (font-spec :family "Fira Code" :size 27)
       doom-unicode-font (font-spec :family "monospace" :size 28)
       doom-serif-font (font-spec :family "Noto Serif CJK SC" :size 28)
       doom-big-font (font-spec :family "Sans" :size 32))
@@ -106,3 +106,116 @@
 (if (and (fboundp 'daemonp) (daemonp))
     (add-hook 'after-make-frame-functions #'+my|init-font)
   (+my/better-font))
+
+
+
+(setq which-key-idle-delay 0.5)
+
+(after! company
+  (setq company-idle-delay 0.5
+        company-minimum-prefix-length 2)
+  (setq company-show-quick-access t)
+  (add-hook 'evil-normal-state-entry-hook #'company-abort))
+
+(setq-default history-length 1000)
+(setq-default prescient-history-length 1000)
+
+(set-company-backend!
+  '(text-mode
+    markdown-mode
+    gfm-mode)
+  '(:seperate
+    company-ispell
+    company-files
+    company-yasnippet))
+(set-company-backend! 'ess-r-mode '(company-R-args company-R-objects company-dabbrev-code :separate))
+
+(setq projectile-ignored-projects '("~/" "/tmp" "~/.emacs.d/.local/straight/repos/"))
+(defun projectile-ignored-project-function (filepath)
+  "Return t if FILEPATH is within any of `projectile-ignored-projects'"
+  (or (mapcar (lambda (p) (s-starts-with-p p filepath)) projectile-ignored-projects)))
+(setq yas-triggers-in-field t)
+
+(defvar mixed-pitch-modes '(org-mode LaTeX-mode markdown-mode gfm-mode Info-mode)
+  "Modes that `mixed-pitch-mode' should be enabled in, but only after UI initialisation.")
+(defun init-mixed-pitch-h ()
+  "Hook `mixed-pitch-mode' into each mode in `mixed-pitch-modes'.
+Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
+  (when (memq major-mode mixed-pitch-modes)
+    (mixed-pitch-mode 1))
+  (dolist (hook mixed-pitch-modes)
+    (add-hook (intern (concat (symbol-name hook) "-hook")) #'mixed-pitch-mode)))
+(add-hook 'doom-init-ui-hook #'init-mixed-pitch-h)
+(autoload #'mixed-pitch-serif-mode "mixed-pitch"
+  "Change the default face of the current buffer to a serifed variable pitch, while keeping some faces fixed pitch." t)
+
+(after! mixed-pitch
+  (defface variable-pitch-serif
+    '((t (:family "serif")))
+    "A variable-pitch face with serifs."
+    :group 'basic-faces)
+  (setq mixed-pitch-set-height t)
+  (setq variable-pitch-serif-font (font-spec :family "Noto Serif CJK SC" :size 27))
+  (set-face-attribute 'variable-pitch-serif nil :font variable-pitch-serif-font)
+  (defun mixed-pitch-serif-mode (&optional arg)
+    "Change the default face of the current buffer to a serifed variable pitch, while keeping some faces fixed pitch."
+    (interactive)
+    (let ((mixed-pitch-face 'variable-pitch-serif))
+      (mixed-pitch-mode (or arg 'toggle)))))
+
+(set-char-table-range composition-function-table ?f '(["\\(?:ff?[fijlt]\\)" 0 font-shape-gstring]))
+(set-char-table-range composition-function-table ?T '(["\\(?:Th\\)" 0 font-shape-gstring]))
+
+
+(setq +zen-text-scale 0.8)
+
+(defvar +zen-serif-p nil
+  "Whether to use a serifed font with `mixed-pitch-mode'.")
+
+(after! writeroom-mode
+  (defvar-local +zen--original-org-indent-mode-p nil)
+  (defvar-local +zen--original-mixed-pitch-mode-p nil)
+  ;(defvar-local +zen--original-org-pretty-table-mode-p nil)
+  (defun +zen-enable-mixed-pitch-mode-h ()
+    "Enable `mixed-pitch-mode' when in `+zen-mixed-pitch-modes'."
+    (when (apply #'derived-mode-p +zen-mixed-pitch-modes)
+      (if writeroom-mode
+          (progn
+            (setq +zen--original-mixed-pitch-mode-p mixed-pitch-mode)
+            (funcall (if +zen-serif-p #'mixed-pitch-serif-mode #'mixed-pitch-mode) 1))
+        (funcall #'mixed-pitch-mode (if +zen--original-mixed-pitch-mode-p 1 -1)))))
+  (pushnew! writeroom--local-variables
+            'display-line-numbers
+            'visual-fill-column-width
+            'org-adapt-indentation
+            'org-superstar-headline-bullets-list
+            'org-superstar-remove-leading-stars)
+  (add-hook 'writeroom-mode-enable-hook
+            (defun +zen-prose-org-h ()
+              "Reformat the current Org buffer appearance for prose."
+              (when (eq major-mode 'org-mode)
+                (setq display-line-numbers nil
+                      visual-fill-column-width 60
+                      org-adapt-indentation nil)
+                (when (featurep 'org-superstar)
+                  (setq-local
+                              ;; org-superstar-headline-bullets-list '("🙘" "🙙" "🙚" "🙛")
+                              ;; org-superstar-headline-bullets-list '("🙐" "🙑" "🙒" "🙓" "🙔" "🙕" "🙖" "🙗")
+                              org-superstar-remove-leading-stars t)
+                  (org-superstar-restart))
+                (setq
+                 +zen--original-org-indent-mode-p org-indent-mode
+                 ;;+zen--original-org-pretty-table-mode-p (bound-and-true-p org-pretty-table-mode)
+                 )
+                (org-indent-mode -1)
+                ;;(org-pretty-table-mode 1)
+                )))
+  (add-hook 'writeroom-mode-disable-hook
+            (defun +zen-nonprose-org-h ()
+              "Reverse the effect of `+zen-prose-org'."
+              (when (eq major-mode 'org-mode)
+                (when (featurep 'org-superstar)
+                  (org-superstar-restart))
+                (when +zen--original-org-indent-mode-p (org-indent-mode 1))
+                ;; (unless +zen--original-org-pretty-table-mode-p (org-pretty-table-mode -1))
+                ))))

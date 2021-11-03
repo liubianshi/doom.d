@@ -80,7 +80,7 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "Fira Code iCursive S12" :size 27)
+(setq doom-font (font-spec :family "JetBrains Mono" :size 27)
       doom-variable-pitch-font (font-spec :family "Sarasa Fixed Slab SC" :size 28)
       doom-unicode-font (font-spec :family "monospace" :size 28)
       doom-serif-font (font-spec :family "Noto Serif CJK SC" :size 28)

@@ -12,6 +12,7 @@
 
 
 (after! org
+  (setq org-image-actual-width 600)
   (defun insert-zero-width-space()
     (interactive)
     (insert "​"))

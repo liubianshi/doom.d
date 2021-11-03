@@ -48,6 +48,14 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+(package! gitconfig-mode
+	  :recipe (:host github :repo "magit/git-modes"
+			 :files ("gitconfig-mode.el")))
+(package! gitignore-mode
+	  :recipe (:host github :repo "magit/git-modes"
+			 :files ("gitignore-mode.el")))
+
 (package! rime)
 (package! fasd)
 (package! org-ref)
@@ -70,6 +78,9 @@
 (package! org-roam-bibtex :recipe (:host github :repo "org-roam/org-roam-bibtex"))
 (unpin! org-roam)
 (unpin! bibtex-completion helm-bibtex ivy-bibtex)
+
+;; CDLATEX
+(package! cdlatex)
 
 ;(package! org-roam-server)
 ;(package! helm-bibtex)

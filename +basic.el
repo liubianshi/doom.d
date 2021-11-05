@@ -63,7 +63,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-flatwhite)
-(setq doom-theme 'doom-dracula)
+;; (setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-acario-dark)
 ;; (setq doom-theme 'berrys)
 
 
@@ -80,7 +81,7 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "JetBrains Mono" :size 27)
+(setq doom-font (font-spec :family "Fira Code" :size 27)
       doom-variable-pitch-font (font-spec :family "Fira Code" :size 27)
       doom-unicode-font (font-spec :family "monospace" :size 28)
       doom-serif-font (font-spec :family "Noto Serif CJK SC" :size 28)

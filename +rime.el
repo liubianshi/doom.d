@@ -20,12 +20,28 @@
                       (string-match-p "[\x5c][a-zA-Z\x23\x40]+[\x7b][^\x7d\x25\x60]*$" string)))))))
 
 (setq rime-show-candidate 'posframe)
-(setq rime-posframe-style 'horizontal)
+(setq rime-posframe-style 'simple)
+(setq rime-show-preedit 't)
+
+(face-spec-set 'rime-default-face
+               '((((class color) (background dark))
+                  (:foreground "#FFFFFF" :background "#040408"))
+                 (((class color) (background light))
+                  (:foreground "red" :background "red")))
+               'face-defface-spec)
+
+(defface rime-indicator-face
+  '((((class color) (background dark))
+     (:foreground "#BADFFF" :bold t))
+    (((class color) (background light))
+     (:foreground "#BADFFF" :bold t)))
+  "Face for mode-line indicator when input-method is available."
+  :group 'rime)
+
 (setq rime-posframe-properties
-      (list :font "WenQuanYi Micro Hei Mono"
-            :background-color "#333333"
-            :foreground-color "#dcdccc"
-            :internal-border-width 6))
+      (list :font (font-spec :family "Sarasa Mono SC" :size 36)
+            :internal-border-width 0))
+
 (setq rime-user-data-dir "~/.local/share/fcitx5/rime")
 (setq rime-inline-ascii-holder nil)
 (setq rime-disable-predicates

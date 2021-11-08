@@ -123,5 +123,13 @@
 ;;      org-pandoc-options-for-html4 '((defaults . "2html"))
 ;;      org-pandoc-options-for-odt '((defaults . "2odt"))
 ;;      org-pandoc-options-for-pptx '((defaults . "2pptx"))
-
 (setq org-pandoc-format-extensions nil)
+
+;; org-download 设定
+(add-hook 'dired-mode-hook 'org-download-enable)
+(use-package! org-download
+  :after 'org
+  :config
+  (setq-default org-download-image-dir "./.asset"))
+
+(setq org-hide-emphasis-markers t)

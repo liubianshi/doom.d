@@ -4,7 +4,7 @@
 (setq window-system-default-frame-alist
       '((x
          ;; face 具体可以更换为系统支持的中文字体
-         ;; (font . "Sarasa Fixed SC")
+         ;; (font . "Sarasa Mono Slab SC")
          (menu-bar-lines . nil)
          (tool-bar-lines . nil)
          ;; mouse
@@ -64,8 +64,8 @@
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-flatwhite)
 ;; (setq doom-theme 'doom-dracula)
-(setq doom-theme 'doom-acario-dark)
 ;; (setq doom-theme 'berrys)
+(setq doom-theme 'doom-acario-dark)
 
 
 ;;; 系统字体设置
@@ -81,11 +81,13 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "Fira Code" :size 27)
-      doom-variable-pitch-font (font-spec :family "Fira Code" :size 27)
-      doom-unicode-font (font-spec :family "monospace" :size 28)
-      doom-serif-font (font-spec :family "Noto Serif CJK SC" :size 28)
-      doom-big-font (font-spec :family "Sans" :size 32))
+(setq doom-font (font-spec :family "monospace" :size 27)
+      doom-variable-pitch-font (font-spec :family "monospace" :size 27)
+      doom-unicode-font (font-spec :family "monospace" :size 27 :weight 'regular)
+      doom-serif-font (font-spec :family "Noto Serif CJK SC" :size 27)
+      doom-big-font (font-spec :family "Noto Sans CJK SC" :size 32))
+;; (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 27)
+;;       doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 27))
 
 (defun +my/better-font()
     (interactive)
@@ -97,7 +99,7 @@
             (dolist (charset '(kana han symbol cjk-misc bopomofo))
                 (set-fontset-font (frame-parameter nil 'font)
                     charset
-                    (font-spec :family "TsangerJinKai01-9128 W03" :size 28))))))
+                    (font-spec :family "Sarasa Mono Slab SC" :size 27))))))
 
 (defun +my|init-font(frame)
   (with-selected-frame frame
@@ -112,24 +114,9 @@
 
 (setq which-key-idle-delay 0.5)
 
-(after! company
-  (setq company-idle-delay 0.5
-        company-minimum-prefix-length 2)
-  (setq company-show-quick-access t)
-  (add-hook 'evil-normal-state-entry-hook #'company-abort))
-
 (setq-default history-length 1000)
 (setq-default prescient-history-length 1000)
 
-(set-company-backend!
-  '(text-mode
-    markdown-mode
-    gfm-mode)
-  '(:seperate
-    company-ispell
-    company-files
-    company-yasnippet))
-(set-company-backend! 'ess-r-mode '(company-R-args company-R-objects company-dabbrev-code :separate))
 
 (setq projectile-ignored-projects '("~/" "/tmp" "~/.emacs.d/.local/straight/repos/"))
 (defun projectile-ignored-project-function (filepath)
@@ -152,11 +139,11 @@ Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
 
 (after! mixed-pitch
   (defface variable-pitch-serif
-    '((t (:family "serif")))
+    '((t (:family "mono")))
     "A variable-pitch face with serifs."
     :group 'basic-faces)
   (setq mixed-pitch-set-height t)
-  (setq variable-pitch-serif-font (font-spec :family "Noto Serif CJK SC" :size 27))
+  (setq variable-pitch-serif-font (font-spec :family "Sarasa Mono Slab SC" :size 27))
   (set-face-attribute 'variable-pitch-serif nil :font variable-pitch-serif-font)
   (defun mixed-pitch-serif-mode (&optional arg)
     "Change the default face of the current buffer to a serifed variable pitch, while keeping some faces fixed pitch."
@@ -166,9 +153,6 @@ Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
 
 (set-char-table-range composition-function-table ?f '(["\\(?:ff?[fijlt]\\)" 0 font-shape-gstring]))
 (set-char-table-range composition-function-table ?T '(["\\(?:Th\\)" 0 font-shape-gstring]))
-
-
-(setq +zen-text-scale 0.8)
 
 (defvar +zen-serif-p nil
   "Whether to use a serifed font with `mixed-pitch-mode'.")
@@ -220,3 +204,7 @@ Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
                 (when +zen--original-org-indent-mode-p (org-indent-mode 1))
                 ;; (unless +zen--original-org-pretty-table-mode-p (org-pretty-table-mode -1))
                 ))))
+
+
+(setq +zen-text-scale 0.8)
+

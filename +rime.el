@@ -39,10 +39,10 @@
   :group 'rime)
 
 (setq rime-posframe-properties
-      (list :font (font-spec :family "Sarasa Mono SC" :size 36)
+      (list :font (font-spec :family "monospace" :size 27)
             :internal-border-width 0))
 
-(setq rime-user-data-dir "~/.local/share/fcitx5/rime")
+(setq rime-user-data-dir "~/.local/share/emacs/rime")
 (setq rime-inline-ascii-holder nil)
 (setq rime-disable-predicates
       '(rime-predicate-evil-mode-p

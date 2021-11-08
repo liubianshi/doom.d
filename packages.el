@@ -78,6 +78,7 @@
 (package! org-roam-bibtex :recipe (:host github :repo "org-roam/org-roam-bibtex"))
 (unpin! org-roam)
 (unpin! bibtex-completion helm-bibtex ivy-bibtex)
+(package! org-download)
 
 ;; CDLATEX
 (package! cdlatex)
@@ -86,3 +87,4 @@
 ;(package! helm-bibtex)
 ;;(package! elfeed-dashboard)
 ;;(package! ace-link)
+;; (package! sis)

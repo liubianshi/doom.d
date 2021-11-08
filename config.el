@@ -43,8 +43,8 @@
 (load! "+ivy-bibtex")
 (load! "+org-roam")
 (load! "+org-roam-bibtex")
+(load! "+company")
 (load! "+bindings")
-
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

@@ -1,3 +1,4 @@
+;;; $DOOMDIR/+fold.el -*- lexical-binding: t; -*-
 ;;origami https://github.com/gregsexton/origami.el
 ;; https://www.reddit.com/r/emacs/comments/5ei7wa/awesome_vimlike_folding_for_evilmode_with_markers/dafj2x4?utm_source=share&utm_medium=web2x&context=3
 (require 'origami)
@@ -6,18 +7,18 @@
 (defun nin-origami-toggle-node ()
   (interactive)
   (if (equal major-mode 'org-mode)
-	  (org-cycle)
-	(save-excursion ;; leave point where it is
-	  (goto-char (point-at-eol))             ;; then go to the end of line
-	  (origami-toggle-node (current-buffer) (point)))))                 ;; and try to fold
+      (org-cycle)
+    (save-excursion ;; leave point where it is
+      (goto-char (point-at-eol))             ;; then go to the end of line
+      (origami-toggle-node (current-buffer) (point)))))                 ;; and try to fold
 
 
 ; "Fold"
 (add-hook 'prog-mode-hook
-		  (lambda ()
-			(setq-local origami-fold-style 'triple-braces)
-			(origami-mode)
-			(origami-close-all-nodes (current-buffer))))
+          (lambda ()
+            (setq-local origami-fold-style 'triple-braces)
+            (origami-mode)
+            (origami-close-all-nodes (current-buffer))))
 (evil-define-key 'normal prog-mode-map (kbd "TAB") 'nin-origami-toggle-node)
 
 (define-key evil-normal-state-map "za" 'origami-forward-toggle-node)

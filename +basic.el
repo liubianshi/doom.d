@@ -1,4 +1,16 @@
 ;;; $DOOMDIR/+basic.el -*- lexical-binding: t; -*-
+(if (eq system-type 'darwin)
+    (setq fontsize 16
+          font-monospace "FiraCode Nerd Font Mono"
+          font-sans "Noto Sans SC"
+          font-serif "Noto Serif SC"
+          )
+  (setq fontsize 27
+        font-monospace "FiraCode Nerd Font Mono"
+        font-monospace-sc "Sarasa Mono Slab SC"
+        font-sans "Noto Sans CJK SC"
+        font-serif "Noto Serif CJK SC"
+        ))
 
 ;;; 启动管理
 (setq window-system-default-frame-alist
@@ -81,25 +93,26 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "monospace" :size 27)
-      doom-variable-pitch-font (font-spec :family "monospace" :size 27)
-      doom-unicode-font (font-spec :family "monospace" :size 27 :weight 'regular)
-      doom-serif-font (font-spec :family "Noto Serif CJK SC" :size 27)
-      doom-big-font (font-spec :family "Noto Sans CJK SC" :size 32))
 ;; (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 27)
 ;;       doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 27))
+
+(setq doom-font (font-spec :family font-monospace :size fontsize)
+      doom-variable-pitch-font (font-spec :family font-monospace :size fontsize)
+      doom-unicode-font (font-spec :family font-monospace :size fontsize :weight 'regular)
+      doom-serif-font (font-spec :family font-serif :size fontsize)
+      doom-big-font (font-spec :family font-sans :size (floor (* fontsize 1.2))))
 
 (defun +my/better-font()
     (interactive)
     ;; english font
     (if (display-graphic-p)
         (progn
-            (set-face-attribute 'default nil :font (format "%s:pixelsize=%d" "Fira Code iCursive S12" 27)) ;; 11 13 17 19 23
+            (set-face-attribute 'default nil :font (format "%s:pixelsize=%d" font-monospace fontsize)) ;; 11 13 17 19 23
             ;; chinese font
             (dolist (charset '(kana han symbol cjk-misc bopomofo))
                 (set-fontset-font (frame-parameter nil 'font)
                     charset
-                    (font-spec :family "Sarasa Mono Slab SC" :size 27))))))
+                    (font-spec :family font-monospace-sc :size fontsize))))))
 
 (defun +my|init-font(frame)
   (with-selected-frame frame

@@ -1,4 +1,6 @@
 ;;; $DOOMDIR/+rime.el -*- lexical-binding: t; -*-
+;;;
+(setq rime-user-data-dir "~/.local/share/emacs/rime")
 (defun rime-predicate-space-after-lbs-p ()
   "If cursor is after a whitespace which follow a non-ascii character."
   (and (> (point) (save-excursion (back-to-indentation) (point)))
@@ -39,10 +41,9 @@
   :group 'rime)
 
 (setq rime-posframe-properties
-      (list :font (font-spec :family "monospace" :size 27)
+      (list :font (font-spec :family font-monospace :size fontsize)
             :internal-border-width 0))
 
-(setq rime-user-data-dir "~/.local/share/emacs/rime")
 (setq rime-inline-ascii-holder nil)
 (setq rime-disable-predicates
       '(rime-predicate-evil-mode-p

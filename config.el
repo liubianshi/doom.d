@@ -41,7 +41,7 @@
 (load! "+markdown")
 (load! "+fold.el")
 (load! "+ivy-bibtex")
-(load! "+org-roam")
+(load! "+org-roam2")
 (load! "+org-roam-bibtex")
 (load! "+company")
 (load! "+bindings")

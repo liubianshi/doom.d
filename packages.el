@@ -50,11 +50,11 @@
 ;(unpin! t)
 
 (package! gitconfig-mode
-	  :recipe (:host github :repo "magit/git-modes"
-			 :files ("gitconfig-mode.el")))
+  :recipe (:host github :repo "magit/git-modes"
+           :files ("gitconfig-mode.el")))
 (package! gitignore-mode
-	  :recipe (:host github :repo "magit/git-modes"
-			 :files ("gitignore-mode.el")))
+  :recipe (:host github :repo "magit/git-modes"
+           :files ("gitignore-mode.el")))
 
 (package! rime)
 (package! fasd)
@@ -74,17 +74,15 @@
 (package! ivy-bibtex)
 (package! vimrc-mode)
 
+;; org-roam
+(unpin! org-roam)
+(package! websocket)
+(package! org-roam-ui :recipe (:host github :repo "org-roam/org-roam-ui" :files ("*.el" "out")))
+
 ;; org-roam-bibtex: https://github.com/org-roam/org-roam-bibtex
 (package! org-roam-bibtex :recipe (:host github :repo "org-roam/org-roam-bibtex"))
-(unpin! org-roam)
 (unpin! bibtex-completion helm-bibtex ivy-bibtex)
+
+;; org-mode 辅助工具
 (package! org-download)
-
-;; CDLATEX
 (package! cdlatex)
-
-;(package! org-roam-server)
-;(package! helm-bibtex)
-;;(package! elfeed-dashboard)
-;;(package! ace-link)
-;; (package! sis)

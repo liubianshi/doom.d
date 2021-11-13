@@ -15,6 +15,11 @@
        ("s" "Software Note" plain "%?"
         :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: %^{Software}")
         :unnarrowed t)
+       ("r" "bibliography reference" plain
+         (file "~/.doom.d/templates/org-roam-ref.org")
+         :target
+         (file+head "references/${citekey}.org" "#+title: ${title}\n#+filetags: Ref\n\n")
+         :unnarrowed t)
        ))
   :config
   (map! :leader
@@ -57,6 +62,12 @@
 ;; org-roam-bibtex 配置 {{{
 (use-package! org-roam-bibtex
   :after org-roam
+  :custom
+  (orb-insert-interface 'ivy-bibtex)
   :config
+  (setq orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file")
+        orb-process-file-keyword t
+        orb-insert-link-description 'citation
+        orb-file-field-extensions '("pdf"))
   (require 'org-ref)) ; optional: if Org Ref is not loaded anywhere else, load it here
 ;; }}}

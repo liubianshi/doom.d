@@ -1,0 +1,10 @@
+
+* 概述
+:PROPERTIES:
+:Custom_ID: %^{citekey}
+:URL: %^{url}
+:AUTHOR: %^{author-or-editor}
+:KEYWORDS: %^{keywords}
+:NOTER_DOCUMENT: %^{file}
+:NOTER_PAGE:
+:END:

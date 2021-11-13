@@ -1,15 +1,22 @@
 ;;; $DOOMDIR/+basic.el -*- lexical-binding: t; -*-
 (if (eq system-type 'darwin)
-    (setq fontsize 16
+    (setq fontsize 15
           font-monospace "FiraCode Nerd Font Mono"
-          font-sans "Noto Sans SC"
+          font-monospace-sc "Sarasa Mono Slab SC"
+          font-sans "PingFang SC"
           font-serif "Noto Serif SC"
+          font-weight 'Light
+          line-space 8
+          doom-theme 'doom-old-hope
           )
   (setq fontsize 27
         font-monospace "FiraCode Nerd Font Mono"
         font-monospace-sc "Sarasa Mono Slab SC"
         font-sans "Noto Sans CJK SC"
         font-serif "Noto Serif CJK SC"
+        font-weight 'Regular
+        line-space 0.5
+        doom-theme 'doom-acario-dark
         ))
 
 ;;; 启动管理
@@ -23,7 +30,7 @@
          (mouse-wheel-mode . 1)
          (mouse-wheel-follow-mouse . t)
          (mouse-avoidance-mode . 'exile)
-         (line-spacing . 0.5)
+         (line-spacing . linespace)
          )
         ;; if on term
         (nil
@@ -51,17 +58,16 @@
     doom-fallback-buffer-name "► Doom"
     +doom-dashboard-name "► Doom"
     default-input-method "rime"
-    line-spacing 0.5
     undo-limit 80000000
     confirm-kill-emacs nil
     evil-want-fine-undo t
     auto-save-default t
     truncate-string-ellipsis "…")
-
 (setq-default
     cursor-type 'bar
     delete-by-moving-to-trash t
     window-combination-resize t
+    line-spacing line-space
     x-stretch-cursor t
     tab-width 4
     uniquify-buffer-name-style 'forward)
@@ -69,7 +75,6 @@
 (display-time-mode 1)                  ; Enable time in the mode-line
 (delete-selection-mode 1)
 (global-subword-mode 1)
-
 ;; 主题设置
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -77,7 +82,6 @@
 ;; (setq doom-theme 'doom-flatwhite)
 ;; (setq doom-theme 'doom-dracula)
 ;; (setq doom-theme 'berrys)
-(setq doom-theme 'doom-acario-dark)
 
 
 ;;; 系统字体设置
@@ -96,9 +100,9 @@
 ;; (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 27)
 ;;       doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 27))
 
-(setq doom-font (font-spec :family font-monospace :size fontsize)
-      doom-variable-pitch-font (font-spec :family font-monospace :size fontsize)
-      doom-unicode-font (font-spec :family font-monospace :size fontsize :weight 'regular)
+(setq doom-font (font-spec :family font-monospace :size fontsize :weight font-weight)
+      doom-variable-pitch-font (font-spec :family font-monospace :size fontsize :weight font-weight)
+      doom-unicode-font (font-spec :family font-sans :size fontsize :weight font-weight)
       doom-serif-font (font-spec :family font-serif :size fontsize)
       doom-big-font (font-spec :family font-sans :size (floor (* fontsize 1.2))))
 
@@ -125,6 +129,7 @@
 
 
 
+(setq line-spacing line-space)
 (setq which-key-idle-delay 0.5)
 
 (setq-default history-length 1000)
@@ -156,7 +161,7 @@ Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
     "A variable-pitch face with serifs."
     :group 'basic-faces)
   (setq mixed-pitch-set-height t)
-  (setq variable-pitch-serif-font (font-spec :family "Sarasa Mono Slab SC" :size 27))
+  (setq variable-pitch-serif-font font-sans)
   (set-face-attribute 'variable-pitch-serif nil :font variable-pitch-serif-font)
   (defun mixed-pitch-serif-mode (&optional arg)
     "Change the default face of the current buffer to a serifed variable pitch, while keeping some faces fixed pitch."

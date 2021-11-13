@@ -25,7 +25,7 @@
 
 (setq bibtex-completion-pdf-open-function
   (lambda (fpath)
-    (call-process "zathurZongEtAl2012_05_71a" nil 0 nil fpath)))
+    (call-process "zathura" nil 0 nil fpath)))
 
 ;; (defun bibtex-completion-open-pdf-external (keys &optional fallback-action)
 ;;   (let ((bibtex-completion-pdf-open-function

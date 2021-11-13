@@ -57,3 +57,11 @@
         rime-predicate-space-after-lbs-p))
 (map! :desc "Toggle Input Method" "<next>" #'toggle-input-method)
 (map! :map rime-active-mode-map "<tab>" #'rime-inline-ascii)
+
+(if (eq system-type 'darwin)
+    (use-package! rime
+    :custom
+    (rime-librime-root "/opt/local/librime/dist")
+    (rime-emacs-module-header-root "/Applications/MacPorts/Emacs.app/Contents/Resources/include/")
+    (default-input-method "rime"))
+  )

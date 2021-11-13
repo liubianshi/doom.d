@@ -3,7 +3,8 @@
       '((ivy-bibtex . ivy--regex-ignore-order)
         (t . ivy--regex-plus)))
 
-(setq bibtex-completion-notes-path (expand-file-name "../Knowledge/PaperNote" org-directory)
+(setq bibtex-completion-notes-path (expand-file-name "references" org-roam-directory)
+      bibtex-completion-edit-notes-function 'orb-bibtex-completion-edit-note
       bibtex-completion-bibliography +lbs/bibtex-lib
       bibtex-completion-library-path +lbs/pdf-paper-lib
       bibtex-completion-pdf-field "file"
@@ -25,7 +26,7 @@
 
 (setq bibtex-completion-pdf-open-function
   (lambda (fpath)
-    (call-process "zathurZongEtAl2012_05_71a" nil 0 nil fpath)))
+    (call-process "zathura" nil 0 nil fpath)))
 
 ;; (defun bibtex-completion-open-pdf-external (keys &optional fallback-action)
 ;;   (let ((bibtex-completion-pdf-open-function

@@ -1,6 +1,6 @@
 ;;; $DOOMDIR/+basic.el -*- lexical-binding: t; -*-
 (if (eq system-type 'darwin)
-    (setq fontsize 15
+    (setq fontsize 16
           font-monospace "FiraCode Nerd Font Mono"
           font-monospace-sc "Sarasa Mono Slab SC"
           font-sans "PingFang SC"
@@ -50,7 +50,7 @@
       (:eval
        (let ((project-name (projectile-project-name)))
          (unless (string= "-" project-name)
-           (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
+           (format (if (buffer-modified-p)  "  [%s]    ◉" "  [%s]    ●") project-name))))))
 
 (setq
     initial-major-mode 'org-mode

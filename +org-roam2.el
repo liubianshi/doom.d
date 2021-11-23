@@ -20,6 +20,9 @@
          :target
          (file+head "references/${citekey}.org" "#+title: ${title}\n#+filetags: Ref\n\n")
          :unnarrowed t)
+       ("n" "Research Note" plain "%?"
+        :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: ResearchNote")
+        :unnarrowed t)
        ))
   :config
   (map! :leader
@@ -29,7 +32,7 @@
         :desc "Org-Roam-Node-Insert"   "i" #'org-roam-node-insert
         :desc "Org-Roam-Capture"       "c" #'org-roam-capture
         :desc "Org-Roam-Buffer-Toggle" "l" #'org-roam-buffer-toggle
-        :desc "Org-Roam-Daily-Capture-Today" "c" #'org-roam-dailies-capture-today)
+        :desc "Org-Roam-Daily-Capture-Today" "j" #'org-roam-dailies-capture-today)
   (setq org-roam-tag-sources '(vanilla last-directory)
         org-roam-graph-viewer "/usr/bin/xdg-open"
         org-roam-verbose nil

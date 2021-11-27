@@ -7,7 +7,7 @@
           font-serif "Noto Serif SC"
           font-weight 'Light
           line-space 8
-          doom-theme 'doom-old-hope
+          doom-theme 'doom-acario-dark
           )
   (setq fontsize 27
         font-monospace "FiraCode Nerd Font Mono"
@@ -18,6 +18,7 @@
         line-space 0.5
         doom-theme 'doom-acario-dark
         ))
+
 
 ;;; 启动管理
 (setq window-system-default-frame-alist

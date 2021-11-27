@@ -15,7 +15,7 @@
         font-sans "Noto Sans CJK SC"
         font-serif "Noto Serif CJK SC"
         font-weight 'Regular
-        line-space 0.5
+        line-space 8
         doom-theme 'doom-acario-dark
         ))
 
@@ -31,7 +31,6 @@
          (mouse-wheel-mode . 1)
          (mouse-wheel-follow-mouse . t)
          (mouse-avoidance-mode . 'exile)
-         (line-spacing . linespace)
          )
         ;; if on term
         (nil
@@ -130,7 +129,6 @@
 
 
 
-(setq line-spacing line-space)
 (setq which-key-idle-delay 0.5)
 
 (setq-default history-length 1000)

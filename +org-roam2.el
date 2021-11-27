@@ -44,6 +44,11 @@
   (org-roam-db-autosync-mode)
   )
 
+;; org-roam-jounal 配置
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" entry "* %<%I:%M %p>: %?"
+         :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
+
 ;; }}}
 ;; org-roam-ui 相关配置  {{{
 (use-package! websocket

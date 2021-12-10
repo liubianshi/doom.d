@@ -114,6 +114,13 @@
 ;; 规定上下标必须加 {}，否则中文使用下划线时它会以为是两个连着的下标
 (setq org-use-sub-superscripts "{}")
 
+(font-lock-add-keywords 'org-mode
+                        '(("^ *\\([-]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+(font-lock-add-keywords 'org-mode
+                        '(("^ *\\([+]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "◦"))))))
+
 ;; ox-pandoc settings
 ;; (setq org-pandoc-format-extensions '(markdown+emoji+east_asian_line_breaks+autolink_bare_uris))
 ;;      org-pandoc-options-for-latex-pdf '((defaults . "2tex"))

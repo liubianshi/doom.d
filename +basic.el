@@ -5,9 +5,9 @@
           font-monospace-sc "Sarasa Mono Slab SC"
           font-sans "PingFang SC"
           font-serif "Noto Serif SC"
-          font-weight 'Light
+          font-weight 'Regular
           line-space 8
-          doom-theme 'doom-acario-dark
+          doom-theme 'doom-acario-light
           )
   (setq fontsize 27
         font-monospace "FiraCode Nerd Font Mono"
@@ -104,7 +104,7 @@
       doom-variable-pitch-font (font-spec :family font-monospace :size fontsize :weight font-weight)
       doom-unicode-font (font-spec :family font-sans :size fontsize :weight font-weight)
       doom-serif-font (font-spec :family font-serif :size fontsize)
-      doom-big-font (font-spec :family font-sans :size (floor (* fontsize 1.2))))
+      doom-big-font (font-spec :family font-sans :size (floor (* fontsize 1))))
 
 (defun +my/better-font()
     (interactive)
@@ -223,5 +223,4 @@ Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
                 ))))
 
 
-(setq +zen-text-scale 0.8)
-
+(setq +zen-text-scale 0.5)

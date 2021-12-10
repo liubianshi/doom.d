@@ -23,13 +23,14 @@
 
 (setq rime-show-candidate 'posframe)
 (setq rime-posframe-style 'simple)
+;; (setq rime-posframe-style 'vertical)
 (setq rime-show-preedit 't)
 
 (face-spec-set 'rime-default-face
                '((((class color) (background dark))
-                  (:foreground "#FFFFFF" :background "#040408"))
+                  (:foreground "#FFFFFF"))
                  (((class color) (background light))
-                  (:foreground "red" :background "red")))
+                  (:foreground "#4a5966" )))
                'face-defface-spec)
 
 (defface rime-indicator-face
@@ -55,8 +56,9 @@
         rime-predicate-punctuation-after-space-cc-p
         rime-predicate-tex-math-or-command-p
         rime-predicate-space-after-lbs-p))
-(map! :desc "Toggle Input Method" "<next>" #'toggle-input-method)
+(map! :desc "Toggle Input Method" :i "C-;" #'toggle-input-method)
 (map! :map rime-active-mode-map "<tab>" #'rime-inline-ascii)
+
 
 (if (eq system-type 'darwin)
     (use-package! rime

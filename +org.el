@@ -11,6 +11,10 @@
    (expand-file-name "Anki" org-directory)))
 
 
+(setq org-preview-latex-default-process 'dvisvgm)
+
+(setq mac-use-title-bar 1)
+
 (after! org
   (setq org-image-actual-width 600)
   (defun insert-zero-width-space()

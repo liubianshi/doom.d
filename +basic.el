@@ -2,10 +2,10 @@
 (if (eq system-type 'darwin)
     (setq fontsize 16
           font-monospace "FiraCode Nerd Font Mono"
-          font-monospace-sc "Sarasa Mono Slab SC"
-          font-sans "PingFang SC"
+          font-monospace-sc "Source Han Serif SC"
+          font-sans "Source Han Serif SC"
           font-serif "Noto Serif SC"
-          font-weight 'Regular
+          font-weight 'regular
           line-space 8
           doom-theme 'doom-acario-light
           )
@@ -14,11 +14,16 @@
         font-monospace-sc "Sarasa Mono SC"
         font-sans "TsangerJinKai01-9128 W04"
         font-serif "Noto Serif CJK SC"
+<<<<<<< HEAD
         font-weight 'Regular
         line-space 14
         doom-theme 'doom-acario-light
+=======
+        font-weight 'regular
+        line-space 8
+        doom-theme 'doom-acario-dark
+>>>>>>> origin/master
         ))
-
 
 ;;; 启动管理
 (setq window-system-default-frame-alist
@@ -36,8 +41,8 @@
         (nil
          (menu-bar-lines . 0)
          (tool-bar-lines . 0)
-         ;; (background-color . "black")
-         ;; (foreground-color . "white")
+         (background-color . "black")
+         (foreground-color . "white")
          )))
 
 ;; Window Title

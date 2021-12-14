@@ -14,15 +14,9 @@
         font-monospace-sc "Sarasa Mono SC"
         font-sans "TsangerJinKai01-9128 W04"
         font-serif "Noto Serif CJK SC"
-<<<<<<< HEAD
-        font-weight 'Regular
-        line-space 14
-        doom-theme 'doom-acario-light
-=======
         font-weight 'regular
         line-space 8
         doom-theme 'doom-acario-dark
->>>>>>> origin/master
         ))
 
 ;;; 启动管理

@@ -10,13 +10,14 @@
           doom-theme 'doom-acario-light
           )
   (setq fontsize 28
+        fontsize-sc 28
         font-monospace "FiraCode Nerd Font Mono"
-        font-monospace-sc "Sarasa Mono SC"
+        font-monospace-sc "TsangerJinKai01-9128 W04"
         font-sans "TsangerJinKai01-9128 W04"
         font-serif "Noto Serif CJK SC"
         font-weight 'regular
-        line-space 8
-        doom-theme 'doom-acario-dark
+        line-space 16
+        doom-theme 'doom-molokai
         ))
 
 ;;; 启动管理
@@ -35,8 +36,8 @@
         (nil
          (menu-bar-lines . 0)
          (tool-bar-lines . 0)
-         (background-color . "black")
-         (foreground-color . "white")
+         ;; (background-color . "black")
+         ;; (foreground-color . "white")
          )))
 
 ;; Window Title
@@ -101,8 +102,8 @@
 
 (setq doom-font (font-spec :family font-monospace :size fontsize :weight font-weight)
       doom-variable-pitch-font (font-spec :family font-monospace :size fontsize :weight font-weight)
-      doom-unicode-font (font-spec :family font-sans :size fontsize :weight font-weight)
-      doom-serif-font (font-spec :family font-serif :size fontsize)
+      doom-unicode-font (font-spec :family font-sans :size fontsize-sc :weight font-weight)
+      doom-serif-font (font-spec :family font-serif :size fontsize-sc)
       doom-big-font (font-spec :family font-sans :size (floor (* fontsize 1))))
 
 (defun +my/better-font()
@@ -115,7 +116,7 @@
             (dolist (charset '(kana han symbol cjk-misc bopomofo))
                 (set-fontset-font (frame-parameter nil 'font)
                     charset
-                    (font-spec :family font-monospace-sc :size fontsize))))))
+                    (font-spec :family font-monospace-sc :size fontsize-sc))))))
 
 (defun +my|init-font(frame)
   (with-selected-frame frame

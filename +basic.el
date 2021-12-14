@@ -9,14 +9,14 @@
           line-space 8
           doom-theme 'doom-acario-light
           )
-  (setq fontsize 27
+  (setq fontsize 28
         font-monospace "FiraCode Nerd Font Mono"
-        font-monospace-sc "Sarasa Mono Slab SC"
-        font-sans "Noto Sans CJK SC"
+        font-monospace-sc "Sarasa Mono SC"
+        font-sans "TsangerJinKai01-9128 W04"
         font-serif "Noto Serif CJK SC"
         font-weight 'Regular
-        line-space 8
-        doom-theme 'doom-acario-dark
+        line-space 14
+        doom-theme 'doom-acario-light
         ))
 
 
@@ -223,4 +223,4 @@ Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
                 ))))
 
 
-(setq +zen-text-scale 0.5)
+(setq +zen-text-scale 0)

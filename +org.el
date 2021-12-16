@@ -36,8 +36,7 @@
                '("A" "Daily Note needed remember (cloze)"
                  entry
                  (file +org-capture-anki-file)
-                 "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:ANKI_DECK: DailyNote\n:END:\n** Front\n%?\n** Back\n%x\n"
-                 :prepend t
+                 "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:ANKI_DECK: DailyNote\n:END:\n** Front\n%?\n** Back\n%x\n" :prepend t
                  :empty-lines 1))
   (add-to-list 'org-capture-templates
              '("i" "ideas collected" entry
@@ -126,15 +125,16 @@
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "◦"))))))
 
 ;; ox-pandoc settings
-;; (setq org-pandoc-format-extensions '(markdown+emoji+east_asian_line_breaks+autolink_bare_uris))
-;;      org-pandoc-options-for-latex-pdf '((defaults . "2tex"))
+(setq org-pandoc-format-extensions '(markdown+emoji+east_asian_line_breaks+autolink_bare_uris+raw_tex+raw_html)
+      ;; org-pandoc-options-for-latex-pdf '((defaults . "2tex.yaml"))
+      )
 ;;      org-pandoc-options-for-beamer-pdf '((defaults . "2beamer"))
 ;;      org-pandoc-options-for-docx '((defaults . "2docx"))
 ;;      org-pandoc-options-for-html5 '((defaults . "2html"))
 ;;      org-pandoc-options-for-html4 '((defaults . "2html"))
 ;;      org-pandoc-options-for-odt '((defaults . "2odt"))
 ;;      org-pandoc-options-for-pptx '((defaults . "2pptx"))
-(setq org-pandoc-format-extensions nil)
+;; (setq org-pandoc-format-extensions nil)
 
 ;; org-download 设定
 (add-hook 'dired-mode-hook 'org-download-enable)

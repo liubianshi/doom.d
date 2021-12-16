@@ -48,6 +48,7 @@
                                  (concat (make-temp-name ".tmp") ".org") s)
       a s v b e (lambda (f) (org-pandoc-run-to-buffer-or-file f 'markdown s nil)))
     (message (format "~/useScript/bin/fexport -t %s -- \"%s\" " format intermediate-file))
+    (sleep-for 1)
     (start-process-shell-command "" nil (format "~/useScript/bin/fexport -t %s -- \"%s\" " format intermediate-file))
     )
   )

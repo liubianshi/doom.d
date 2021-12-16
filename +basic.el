@@ -1,6 +1,7 @@
 ;;; $DOOMDIR/+basic.el -*- lexical-binding: t; -*-
 (if (eq system-type 'darwin)
     (setq fontsize 16
+          fontsize-sc 16
           font-monospace "FiraCode Nerd Font Mono"
           font-monospace-sc "Source Han Serif SC"
           font-sans "Source Han Serif SC"

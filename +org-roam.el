@@ -109,7 +109,7 @@
                  :head "#+title: ${title}#+roam_alias:\n#+roam_key: ${ref}#+roam_tags: %^g\n\n"
                  :immediate-finish t
                  :unnarrowed t
-                 :empty-lines 0))
+                 :empty-lines 0))
   (add-to-list 'org-roam-capture-templates
                '("k" "Quesion Solved" plain (function org-roam-capture--get-point)
                  ""

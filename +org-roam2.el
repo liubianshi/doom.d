@@ -27,6 +27,14 @@
         :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: ResearchNote")
         :unnarrowed t)
        ))
+  (org-roam-capture-ref-templates
+   '(("c" "Clipboard" plain "* %^{heading} %t\n%[/tmp/org/roam-capture.org]\n\n%?"
+     :target (file+head "Digest/%<%Y%m%d>-${slug}.org" "#+title: ${title}")
+     :unnarrowed t)
+     ("a" "Annotation" plain "* %^{heading} %t\n${body}\n\n"
+     :target (file+head "Digest/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}")
+     :immediate-finish t
+     :unnarrowed t)))
   :config
   (map! :leader
         :prefix "r"

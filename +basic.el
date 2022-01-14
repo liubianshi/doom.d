@@ -3,8 +3,8 @@
     (setq fontsize 16
           fontsize-sc 16
           font-monospace "FiraCode Nerd Font Mono"
-          font-monospace-sc "Source Han Serif SC"
-          font-sans "Source Han Serif SC"
+          font-monospace-sc "PingFang SC"
+          font-sans "PingFang SC"
           font-serif "Noto Serif SC"
           font-weight 'regular
           line-space 8

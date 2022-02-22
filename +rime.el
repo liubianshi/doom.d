@@ -21,6 +21,11 @@
                   (or (string-match-p "[\x5c][\x21-\x24\x26-\x59\x61\x7e]*$" string)
                       (string-match-p "[\x5c][a-zA-Z\x23\x40]+[\x7b][^\x7d\x25\x60]*$" string)))))))
 
+(defun rime-predicate-source-code-lbs-p ()
+  "If cursor is in a line source code line"
+  (let ((string (buffer-substring (line-beginning-position) (point))))
+    (string-match-p "^[:space:]*#\\+begin" string)))
+
 (setq rime-show-candidate 'posframe)
 (setq rime-posframe-style 'simple)
 ;; (setq rime-posframe-style 'vertical)
@@ -55,7 +60,8 @@
         rime-predicate-space-after-cc-p
         rime-predicate-punctuation-after-space-cc-p
         rime-predicate-tex-math-or-command-p
-        rime-predicate-space-after-lbs-p))
+        rime-predicate-space-after-lbs-p
+        rime-predicate-source-code-lbs-p))
 (map! :desc "Toggle Input Method" :i "C-;" #'toggle-input-method)
 (map! :map rime-active-mode-map "<tab>" #'rime-inline-ascii)
 

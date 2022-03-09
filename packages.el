@@ -86,3 +86,6 @@
 ;; org-mode 辅助工具
 (package! org-download)
 (package! cdlatex)
+
+;; go-translate
+(package! go-translate)

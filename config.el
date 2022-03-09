@@ -45,6 +45,7 @@
 (load! "+org-roam-bibtex")
 (load! "+company")
 (load! "+bindings")
+(load! "+translate")
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

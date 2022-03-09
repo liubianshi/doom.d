@@ -37,6 +37,12 @@
                  "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:ANKI_DECK: DailyNote\n:END:\n** Front\n%?\n** Back\n%x\n" :prepend t
                  :empty-lines 1))
   (add-to-list 'org-capture-templates
+               '("a" "New Word" entry
+                 (file +org-capture-anki-file)
+                 "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Basic\n:ANKI_DECK: NewWords\n:END:\n** Front\n%x\n** Back\n"
+                 :prepend t
+                 :empty-lines 1))
+  (add-to-list 'org-capture-templates
              '("i" "ideas collected" entry
                (file +org-capture-ideas-file)
                "*  %^{heading} %t %^g\n %?\n" :prepend t :empty-lines 1))

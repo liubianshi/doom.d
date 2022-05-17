@@ -1,4 +1,8 @@
 ;;; $DOOMDIR/+basic.el -*- lexical-binding: t; -*-
+
+;;; 禁止一些消息
+;;(setq warning-suppress-types (append warning-suppress-types '((org-element-cache))))
+
 (if (eq system-type 'darwin)
     (setq fontsize 16
           fontsize-sc 16
@@ -13,12 +17,12 @@
   (setq fontsize 28
         fontsize-sc 28
         font-monospace "FiraCode Nerd Font Mono"
-        font-monospace-sc "TsangerJinKai01-9128 W04"
+        font-monospace-sc "LXGW WenKai Mono"
         font-sans "TsangerJinKai01-9128 W04"
-        font-serif "Noto Serif CJK SC"
+        font-serif "LXGW WenKai"
         font-weight 'regular
         line-space 16
-        doom-theme 'doom-molokai
+        doom-theme 'doom-acario-light
         ))
 
 ;;; 启动管理

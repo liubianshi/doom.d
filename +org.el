@@ -1,5 +1,8 @@
 ;;; $DOOMDIR/+org.el -*- lexical-binding: t; -*-
 
+(add-hook 'org-mode-hook #'turn-on-org-cdlatex)
+(add-hook 'org-mode-hook #'toggle-input-method)
+
 ;; org-mode
 (defun +org-capture-ideas-file ()
   (expand-file-name "Ideas/ideas.org" org-directory))
@@ -148,3 +151,11 @@
   (setq-default org-download-image-dir "./.asset"))
 
 (setq org-hide-emphasis-markers t)
+
+;; org-latex-impatient 设定
+(use-package! org-latex-impatient
+  :defer t
+  :hook (org-mode . org-latex-impatient-mode)
+  :init
+  (setq org-latex-impatient-tex2svg-bin
+        "/usr/bin/tex2svg"))

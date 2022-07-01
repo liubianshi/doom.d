@@ -4,15 +4,15 @@
 ;;(setq warning-suppress-types (append warning-suppress-types '((org-element-cache))))
 
 (if (eq system-type 'darwin)
-    (setq fontsize 16
-          fontsize-sc 16
+    (setq fontsize 14
+          fontsize-sc 14
           font-monospace "FiraCode Nerd Font Mono"
-          font-monospace-sc "PingFang SC"
-          font-sans "PingFang SC"
-          font-serif "Noto Serif SC"
+          font-monospace-sc "LXGW WenKai Mono"
+          font-sans "LXGW WenKai Mono"
+          font-serif "LXGW WenKai"
           font-weight 'regular
           line-space 8
-          doom-theme 'doom-acario-light
+          doom-theme 'berrys
           )
   (setq fontsize 28
         fontsize-sc 28
@@ -109,7 +109,7 @@
       doom-variable-pitch-font (font-spec :family font-monospace :size fontsize :weight font-weight)
       doom-unicode-font (font-spec :family font-sans :size fontsize-sc :weight font-weight)
       doom-serif-font (font-spec :family font-serif :size fontsize-sc)
-      doom-big-font (font-spec :family font-sans :size (floor (* fontsize 1))))
+      doom-big-font (font-spec :family font-sans :size (floor (* fontsize 1.5))))
 
 (defun +my/better-font()
     (interactive)

@@ -22,7 +22,7 @@
         font-serif "LXGW WenKai"
         font-weight 'regular
         line-space 16
-        doom-theme 'doom-acario-light
+        doom-theme 'doom-gruvbox
         ))
 
 ;;; 启动管理

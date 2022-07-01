@@ -1,4 +1,5 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+(defconst IS-MAC (eq system-type 'darwin))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -46,6 +47,16 @@
 (load! "+company")
 (load! "+bindings")
 (load! "+translate")
+
+(use-package! pangu-spacing
+  :init
+  (add-hook 'org-mode-hook
+            '(lambda ()
+               (set (make-local-variable
+                     'pangu-spacing-real-insert-separtor) t)))
+  :config
+  (global-pangu-spacing-mode 1)
+)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

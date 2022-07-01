@@ -90,3 +90,6 @@
 
 ;; go-translate
 (package! go-translate)
+
+;; 中文显示
+(package! pangu-spacing)

@@ -12,7 +12,7 @@
           font-serif "LXGW WenKai"
           font-weight 'regular
           line-space 8
-          doom-theme 'berrys
+          doom-theme 'doom-gruvbox
           )
   (setq fontsize 28
         fontsize-sc 28
@@ -41,8 +41,8 @@
         (nil
          (menu-bar-lines . 0)
          (tool-bar-lines . 0)
-         ;; (background-color . "black")
-         ;; (foreground-color . "white")
+         (background-color . "black")
+         (foreground-color . "white")
          )))
 
 ;; Window Title

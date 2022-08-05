@@ -16,10 +16,10 @@
           )
   (setq fontsize 28
         fontsize-sc 28
-        font-monospace "FiraCode Nerd Font Mono"
+        font-monospace "Fira Code iCursive S12"
         font-monospace-sc "LXGW WenKai Mono"
-        font-sans "TsangerJinKai01-9128 W04"
-        font-serif "LXGW WenKai"
+        font-sans "Sarasa Fixed Slab SC"
+        font-serif "LXGW WenKai Mono"
         font-weight 'regular
         line-space 16
         doom-theme 'doom-gruvbox
@@ -55,7 +55,7 @@
       (:eval
        (let ((project-name (projectile-project-name)))
          (unless (string= "-" project-name)
-           (format (if (buffer-modified-p)  "  [%s]    ◉" "  [%s]    ●") project-name))))))
+           (format (if (buffer-modified-p)  "  [%s]  ◉" "  [%s]  ●") project-name))))))
 
 (setq
     initial-major-mode 'org-mode

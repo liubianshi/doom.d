@@ -30,6 +30,7 @@
 (setq rime-posframe-style 'simple)
 ;; (setq rime-posframe-style 'vertical)
 (setq rime-show-preedit 't)
+(bind-key "C-`" 'rime-send-keybinding)
 
 (face-spec-set 'rime-default-face
                '((((class color) (background dark))
@@ -47,7 +48,7 @@
   :group 'rime)
 
 (setq rime-posframe-properties
-      (list :font (font-spec :family font-monospace :size fontsize)
+      (list :font (font-spec :family font-monospace :size (* fontsize 1.5))
             :internal-border-width 0))
 
 (setq rime-inline-ascii-holder nil)

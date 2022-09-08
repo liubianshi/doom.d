@@ -18,7 +18,7 @@
         fontsize-sc 28
         font-monospace "Fira Code iCursive S12"
         font-monospace-sc "LXGW WenKai Mono"
-        font-sans "Sarasa Fixed Slab SC"
+        font-sans "LXGW WenKai Mono"
         font-serif "LXGW WenKai Mono"
         font-weight 'regular
         line-space 16

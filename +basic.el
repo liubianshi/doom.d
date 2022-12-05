@@ -14,16 +14,18 @@
           line-space 10
           doom-theme 'berrys
           )
-  (setq fontsize 28
-        fontsize-sc 28
+  (setq fontsize 32
+        fontsize-sc 30
         font-monospace "Fira Code iCursive S12"
         font-monospace-sc "LXGW WenKai Mono"
-        font-sans "LXGW WenKai Mono"
-        font-serif "LXGW WenKai Mono"
+        font-sans "LXGW WenKai"
+        font-serif "LXGW WenKai"
         font-weight 'regular
-        line-space 16
+        line-space 0.5
         doom-theme 'doom-gruvbox
         ))
+
+
 
 ;;; 启动管理
 (setq window-system-default-frame-alist
@@ -44,6 +46,7 @@
          (background-color . "black")
          (foreground-color . "white")
          )))
+
 
 ;; Window Title
 (setq frame-title-format
@@ -77,6 +80,12 @@
     tab-width 4
     uniquify-buffer-name-style 'forward)
 
+;; 在增加行间距时，字符显示偏上，因此关闭当前行高亮显示，在终端模式下不存在这个问题
+(if (display-graphic-p)
+    (setq global-hl-line-modes nil
+          hl-line-mode nil))
+
+
 (display-time-mode 1)                  ; Enable time in the mode-line
 (delete-selection-mode 1)
 (global-subword-mode 1)
@@ -109,7 +118,7 @@
       doom-variable-pitch-font (font-spec :family font-monospace :size fontsize :weight font-weight)
       doom-unicode-font (font-spec :family font-sans :size fontsize-sc :weight font-weight)
       doom-serif-font (font-spec :family font-serif :size fontsize-sc)
-      doom-big-font (font-spec :family font-sans :size (floor (* fontsize 1.5))))
+      doom-big-font (font-spec :family font-sans :size (floor (* fontsize 2))))
 
 (defun +my/better-font()
     (interactive)

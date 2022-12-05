@@ -12,7 +12,7 @@
           font-serif "LXGW WenKai"
           font-weight 'regular
           line-space 10
-          doom-theme 'doom-gruvbox
+          doom-theme 'berrys
           )
   (setq fontsize 28
         fontsize-sc 28

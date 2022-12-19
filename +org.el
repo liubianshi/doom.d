@@ -34,8 +34,7 @@
                  :prepend t
                  :empty-lines 1))
   (add-to-list 'org-capture-templates
-               '("A" "Daily Note needed remember (cloze)"
-                 entry
+               '("A" "Daily Note needed remember (cloze)" entry
                  (file +org-capture-anki-file)
                  "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:ANKI_DECK: DailyNote\n:END:\n** Front\n%?\n** Back\n%x\n" :prepend t
                  :empty-lines 1))
@@ -57,7 +56,8 @@
                 '("c" "Collect terms" table-line (file "~/Documents/Writing/term.org")
                 "| %^{term} | %^{desc} | %^{Shorthand} |"
                 :prepend 0
-                :empty-lines 0)))
+                :empty-lines 0))
+  )
 
 ;; Org Bullets
 (use-package! org

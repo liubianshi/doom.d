@@ -58,6 +58,10 @@
   (global-pangu-spacing-mode 1)
 )
 
+;; 在增加行间距时，字符显示偏上，因此关闭当前行高亮显示，在终端模式下不存在这个问题
+      (setq-default global-hl-line-modes nil)
+      (hl-line-mode -1)
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one

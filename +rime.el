@@ -1,6 +1,14 @@
 ;;; $DOOMDIR/+rime.el -*- lexical-binding: t; -*-
 ;;;
-(setq rime-user-data-dir "~/.local/share/emacs/rime")
+(setq rime-user-data-dir "~/.local/share/emacs/rime"
+      rime-show-candidate 'minibuffer
+      rime-posframe-style 'vertical
+      rime-show-preedit 't
+      rime-cursor "|"
+      rime-inline-ascii-holder ?a
+      rime-inline-ascii-trigger 'shift-r
+      )
+
 (defun rime-predicate-space-after-lbs-p ()
   "If cursor is after a whitespace which follow a non-ascii character."
   (and (> (point) (save-excursion (back-to-indentation) (point)))
@@ -26,11 +34,9 @@
   (let ((string (buffer-substring (line-beginning-position) (point))))
     (string-match-p "^[:space:]*#\\+begin" string)))
 
-(setq rime-show-candidate 'posframe)
-(setq rime-posframe-style 'simple)
-;; (setq rime-posframe-style 'vertical)
-(setq rime-show-preedit 't)
+
 (bind-key "C-`" 'rime-send-keybinding)
+
 
 (face-spec-set 'rime-default-face
                '((((class color) (background dark))
@@ -47,11 +53,10 @@
   "Face for mode-line indicator when input-method is available."
   :group 'rime)
 
-(setq rime-posframe-properties
-      (list :font (font-spec :family font-monospace :size (* fontsize 1.5))
-            :internal-border-width 0))
+; (setq rime-posframe-properties
+;       (list :font (font-spec :family font-monospace :size (* fontsize 1.5))
+;             :internal-border-width 0))
 
-(setq rime-inline-ascii-holder nil)
 (setq rime-disable-predicates
       '(rime-predicate-evil-mode-p
         rime-predicate-prog-in-code-p

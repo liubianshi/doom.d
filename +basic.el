@@ -22,7 +22,7 @@
         font-serif "LXGW WenKai"
         font-weight 'regular
         line-space 0.5
-        doom-theme 'doom-gruvbox
+        doom-theme 'doom-ayu-dark
         ))
 
 
@@ -79,11 +79,6 @@
     x-stretch-cursor t
     tab-width 4
     uniquify-buffer-name-style 'forward)
-
-;; 在增加行间距时，字符显示偏上，因此关闭当前行高亮显示，在终端模式下不存在这个问题
-(if (display-graphic-p)
-    (setq global-hl-line-modes nil
-          hl-line-mode nil))
 
 
 (display-time-mode 1)                  ; Enable time in the mode-line

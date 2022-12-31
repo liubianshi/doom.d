@@ -8,6 +8,8 @@
   (expand-file-name "Ideas/ideas.org" org-directory))
 (defun +org-capture-question-file ()
   (expand-file-name "Know-How/question-solving.org" org-directory))
+(defun +org-capture-tucao-file()
+  (expand-file-name "Tucao.org" org-directory))
 (defun +org-capture-anki-file ()
   (expand-file-name
    (format-time-string "DailyNote-%Y%m%d.org" (current-time))
@@ -57,6 +59,10 @@
                 "| %^{term} | %^{desc} | %^{Shorthand} |"
                 :prepend 0
                 :empty-lines 0))
+  (add-to-list 'org-capture-templates
+             '("f" "Tucao" entry
+               (file +org-capture-tucao-file)
+               "*  %^{heading} %t %^g\n %?\n" :prepend t :empty-lines 1))
   )
 
 ;; Org Bullets

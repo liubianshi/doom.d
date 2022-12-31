@@ -22,7 +22,7 @@
         font-serif "LXGW WenKai"
         font-weight 'regular
         line-space 0.5
-        doom-theme 'doom-ayu-dark
+        doom-theme 'doom-old-hope
         ))
 
 

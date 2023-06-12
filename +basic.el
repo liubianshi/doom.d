@@ -18,8 +18,8 @@
         fontsize-sc 30
         font-monospace "Fira Code iCursive S12"
         font-monospace-sc "LXGW WenKai Mono"
-        font-sans "LXGW WenKai"
-        font-serif "LXGW WenKai"
+        font-sans "LXGW WenKai Mono"
+        font-serif "LXGW WenKai Mono"
         font-weight 'regular
         line-space 0.5
         doom-theme 'doom-old-hope

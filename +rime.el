@@ -1,8 +1,8 @@
 ;;; $DOOMDIR/+rime.el -*- lexical-binding: t; -*-
 ;;;
 (setq rime-user-data-dir "~/.local/share/emacs/rime"
-      rime-show-candidate 'minibuffer
-      rime-posframe-style 'vertical
+      rime-show-candidate 'posframe
+      rime-posframe-style 'horizontal
       rime-show-preedit 't
       rime-cursor "|"
       rime-inline-ascii-holder ?a

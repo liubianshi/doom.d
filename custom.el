@@ -6,7 +6,10 @@
  '(custom-safe-themes
    '("f91395598d4cb3e2ae6a2db8527ceb83fed79dbaf007f435de3e91e5bda485fb" default))
  '(warning-suppress-types
-   '((org-element-cache)
+   '((frameset)
+     (frameset)
+     (frameset)
+     (org-element-cache)
      (org-element-cache)
      (org-element-cache)
      (org-element-cache)

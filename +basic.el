@@ -22,7 +22,7 @@
         font-serif "LXGW WenKai Mono"
         font-weight 'regular
         line-space 0.5
-        doom-theme 'doom-old-hope
+        doom-theme 'catppuccin
         ))
 
 
@@ -206,19 +206,19 @@ Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
               "Reformat the current Org buffer appearance for prose."
               (when (eq major-mode 'org-mode)
                 (setq display-line-numbers nil
-                      visual-fill-column-width 60
+                      visual-fill-column-width 100
                       org-adapt-indentation nil)
                 (when (featurep 'org-superstar)
                   (setq-local
                               ;; org-superstar-headline-bullets-list '("🙘" "🙙" "🙚" "🙛")
-                              ;; org-superstar-headline-bullets-list '("🙐" "🙑" "🙒" "🙓" "🙔" "🙕" "🙖" "🙗")
+                              org-superstar-headline-bullets-list '("🙐" "🙑" "🙒" "🙓" "🙔" "🙕" "🙖" "🙗")
                               org-superstar-remove-leading-stars t)
                   (org-superstar-restart))
                 (setq
                  +zen--original-org-indent-mode-p org-indent-mode
                  ;;+zen--original-org-pretty-table-mode-p (bound-and-true-p org-pretty-table-mode)
                  )
-                (org-indent-mode -1)
+                (org-indent-mode 1)
                 ;;(org-pretty-table-mode 1)
                 )))
   (add-hook 'writeroom-mode-disable-hook

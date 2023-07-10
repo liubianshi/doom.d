@@ -69,6 +69,8 @@
 (package! evil-pinyin)
 (package! origami :recipe (:host github :repo "gregsexton/origami.el"))
 (package! berrys-theme)
+(package! catppuccin-theme)
+(package! kanagawa-theme :recipe (:host github :repo "jasonm23/emacs-theme-kanagawa" :files ("kanagawa-theme.el")))
 (package! valign :recipe (:host github :repo "casouri/valign" :files ("valign.el")))
 (package! bibtex-completion)
 (package! ivy-bibtex)

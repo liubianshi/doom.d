@@ -4,15 +4,15 @@
 ;;(setq warning-suppress-types (append warning-suppress-types '((org-element-cache))))
 
 (if (eq system-type 'darwin)
-    (setq fontsize 16
-          fontsize-sc 16
-          font-monospace "FiraCode Nerd Font Mono"
+    (setq fontsize 14
+          fontsize-sc 14
+          font-monospace "Fira Code iCursive S12"
           font-monospace-sc "LXGW WenKai Mono"
           font-sans "LXGW WenKai Mono"
           font-serif "LXGW WenKai"
           font-weight 'regular
           line-space 10
-          doom-theme 'berrys
+          doom-theme 'doom-tokyo-night
           )
   (setq fontsize 32
         fontsize-sc 30

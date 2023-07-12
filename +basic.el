@@ -4,15 +4,15 @@
 ;;(setq warning-suppress-types (append warning-suppress-types '((org-element-cache))))
 
 (if (eq system-type 'darwin)
-    (setq fontsize 14
-          fontsize-sc 14
+    (setq fontsize 18
+          fontsize-sc 18
           font-monospace "Fira Code iCursive S12"
           font-monospace-sc "LXGW WenKai Mono"
           font-sans "LXGW WenKai Mono"
           font-serif "LXGW WenKai"
           font-weight 'regular
           line-space 10
-          doom-theme 'doom-tokyo-night
+          doom-theme 'kanagawa
           )
   (setq fontsize 32
         fontsize-sc 30
@@ -113,7 +113,7 @@
       doom-variable-pitch-font (font-spec :family font-monospace :size fontsize :weight font-weight)
       doom-unicode-font (font-spec :family font-sans :size fontsize-sc :weight font-weight)
       doom-serif-font (font-spec :family font-serif :size fontsize-sc)
-      doom-big-font (font-spec :family font-sans :size (floor (* fontsize 2))))
+      doom-big-font (font-spec :family font-sans :size (floor (* fontsize 1))))
 
 (defun +my/better-font()
     (interactive)
@@ -211,7 +211,7 @@ Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
                 (when (featurep 'org-superstar)
                   (setq-local
                               ;; org-superstar-headline-bullets-list '("🙘" "🙙" "🙚" "🙛")
-                              org-superstar-headline-bullets-list '("🙐" "🙑" "🙒" "🙓" "🙔" "🙕" "🙖" "🙗")
+                              ;; org-superstar-headline-bullets-list '("🙐" "🙑" "🙒" "🙓" "🙔" "🙕" "🙖" "🙗")
                               org-superstar-remove-leading-stars t)
                   (org-superstar-restart))
                 (setq

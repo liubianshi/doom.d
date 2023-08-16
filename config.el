@@ -6,8 +6,9 @@
 (setq user-full-name "Liubianshi"
       user-mail-address "liu.bian.shi@gmail.com"
       ;org-directory (or (getenv "ORG_LIB") "~/Documents/Writing/Note-Org/")
+      citar-bibliography '("~/Documents/paper_ref.bib")
       org-directory "~/Documents/Writing/"
-      +lbs/bibtex-lib (or (getenv "BIBTEX_LIB") "~/Documents/paper_ref.bib")
+      +lbs/bibtex-lib "~/Documents/paper_ref.bib"
       +lbs/pdf-paper-lib (expand-file-name "Zotero/AttachStorage/" (getenv "NUTSTORE"))
 )
 (setq doom-localleader-key ";"
@@ -41,9 +42,9 @@
 (load! "+projectile")
 (load! "+markdown")
 (load! "+fold.el")
-(load! "+ivy-bibtex")
+;; (load! "+ivy-bibtex")
 (load! "+org-roam2")
-(load! "+org-roam-bibtex")
+;;(load! "+org-roam-bibtex")
 (load! "+company")
 (load! "+bindings")
 (load! "+translate")
@@ -58,9 +59,11 @@
   (global-pangu-spacing-mode 1)
 )
 
-;; 在增加行间距时，字符显示偏上，因此关闭当前行高亮显示，在终端模式下不存在这个问题
-      (setq-default global-hl-line-modes nil)
-      (hl-line-mode -1)
+;; 使用普通方法设置行高时没有效果，需要使用这种方法
+(defun set-bigger-spacing ()
+  (setq-local default-text-properties '(line-spacing 0.25 line-height 1.25)))
+(add-hook 'text-mode-hook 'set-bigger-spacing)
+(add-hook 'prog-mode-hook 'set-bigger-spacing)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

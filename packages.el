@@ -72,8 +72,8 @@
 (package! catppuccin-theme)
 (package! kanagawa-theme :recipe (:host github :repo "jasonm23/emacs-theme-kanagawa" :files ("kanagawa-theme.el")))
 (package! valign :recipe (:host github :repo "casouri/valign" :files ("valign.el")))
-(package! bibtex-completion)
-(package! ivy-bibtex)
+;; (package! bibtex-completion)
+;; (package! ivy-bibtex)
 (package! vimrc-mode)
 
 ;; org-roam
@@ -82,9 +82,9 @@
 (package! org-roam-ui :recipe (:host github :repo "org-roam/org-roam-ui" :files ("*.el" "out")))
 
 ;; org-roam-bibtex: https://github.com/org-roam/org-roam-bibtex
-(package! org-roam-bibtex :recipe (:host github :repo "org-roam/org-roam-bibtex"))
+;;(package! org-roam-bibtex :recipe (:host github :repo "org-roam/org-roam-bibtex"))
 (unpin! org-roam)
-(unpin! bibtex-completion helm-bibtex ivy-bibtex)
+;;(unpin! bibtex-completion helm-bibtex ivy-bibtex)
 
 ;; org-mode 辅助工具
 (package! org-download)

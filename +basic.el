@@ -21,8 +21,8 @@
         font-sans "LXGW WenKai Mono"
         font-serif "LXGW WenKai Mono"
         font-weight 'regular
-        line-space 0.5
-        doom-theme 'catppuccin
+        line-space 0
+        doom-theme 'kanagawa
         ))
 
 
@@ -76,6 +76,7 @@
     delete-by-moving-to-trash t
     window-combination-resize t
     line-spacing line-space
+    line-height 1.5
     x-stretch-cursor t
     tab-width 4
     uniquify-buffer-name-style 'forward)

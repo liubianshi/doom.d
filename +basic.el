@@ -92,6 +92,12 @@
 ;; (setq doom-theme 'doom-dracula)
 ;; (setq doom-theme 'berrys)
 
+;; Since this is a comfy config for writing, proportional fonts are what we want,
+;; but its nice to have both mono and proportional fonts.
+(use-package! mixed-pitch
+  :hook (org-mode . mixed-pitch-mode)
+  :config
+  (setq mixed-pitch-face 'variable-pitch))
 
 ;;; 系统字体设置
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -110,7 +116,7 @@
 ;;       doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 27))
 
 (setq doom-font (font-spec :family font-monospace :size fontsize :weight font-weight)
-      doom-variable-pitch-font (font-spec :family font-monospace :size fontsize :weight font-weight)
+      doom-variable-pitch-font (font-spec :family font-sans :size fontsize :weight font-weight)
       doom-unicode-font (font-spec :family font-sans :size fontsize-sc :weight font-weight)
       doom-serif-font (font-spec :family font-serif :size fontsize-sc)
       doom-big-font (font-spec :family font-sans :size (floor (* fontsize 1))))
@@ -136,8 +142,6 @@
     (add-hook 'after-make-frame-functions #'+my|init-font)
   (+my/better-font))
 
-
-
 (setq which-key-idle-delay 0.5)
 
 (setq-default history-length 1000)
@@ -151,46 +155,39 @@
 (setq yas-triggers-in-field t)
 
 
+(setq +zen-text-scale 0)
 (after! writeroom-mode
   (defvar-local +zen--original-org-indent-mode-p nil)
   (defvar-local +zen--original-mixed-pitch-mode-p nil)
-  ;(defvar-local +zen--original-org-pretty-table-mode-p nil)
+  (defun +zen-prose-org-h ()
+    "Reformat the current Org buffer appearance for prose."
+    (setq display-line-numbers nil)
+    (when (eq major-mode 'org-mode)
+      (setq org-adapt-indentation -1
+            visual-fill-column-width 100)
+      (when (featurep 'org-superstar)
+        (setq-local org-superstar-remove-leading-stars t)
+        (org-superstar-restart))
+      (setq +zen--original-org-indent-mode-p org-indent-mode)
+      (org-indent-mode 1)
+      ))
+  (defun +zen-nonprose-org-h ()
+    "Reverse the effect of `+zen-prose-org'."
+    (when (eq major-mode 'org-mode)
+      (when (featurep 'org-superstar)
+        (org-superstar-restart))
+      (when +zen--original-org-indent-mode-p (org-indent-mode 1))
+      ))
   (pushnew! writeroom--local-variables
             'display-line-numbers
             'visual-fill-column-width
             'org-adapt-indentation
             'org-superstar-headline-bullets-list
             'org-superstar-remove-leading-stars)
-  (add-hook 'writeroom-mode-enable-hook
-            (defun +zen-prose-org-h ()
-              "Reformat the current Org buffer appearance for prose."
-              (when (eq major-mode 'org-mode)
-                (setq display-line-numbers nil
-                      visual-fill-column-width 100
-                      org-adapt-indentation nil)
-                (when (featurep 'org-superstar)
-                  (setq-local
-                        ;; org-superstar-headline-bullets-list '("🙘" "🙙" "🙚" "🙛")
-                        ;; org-superstar-headline-bullets-list '("🙐" "🙑" "🙒" "🙓" "🙔" "🙕" "🙖" "🙗")
-                        org-superstar-remove-leading-stars t)
-                  (org-superstar-restart))
-                (setq
-                 +zen--original-org-indent-mode-p org-indent-mode
-                 )
-                (org-indent-mode 1)
-                ;;(org-pretty-table-mode 1)
-                )))
-  (add-hook 'writeroom-mode-disable-hook
-            (defun +zen-nonprose-org-h ()
-              "Reverse the effect of `+zen-prose-org'."
-              (when (eq major-mode 'org-mode)
-                (when (featurep 'org-superstar)
-                  (org-superstar-restart))
-                (when +zen--original-org-indent-mode-p (org-indent-mode 1))
-                ))))
+  (add-hook 'writeroom-mode-enable-hook #'+zen-prose-org-h)
+  (add-hook 'writeroom-mode-disable-hook #'+zen-nonprose-org-h))
 
 
-(setq +zen-text-scale 0)
 
 (defun set-background-for-terminal (&optional frame)
   (or frame (setq frame (selected-frame)))
@@ -199,3 +196,24 @@
     (set-face-background 'default "unspecified-bg" frame)))
 (add-hook 'after-make-frame-functions 'set-background-for-terminal)
 (add-hook 'window-setup-hook 'set-background-for-terminal)
+
+
+(defun et/fixup-whitespace ()
+  "Fixup white space between objects around point.
+Leave one space or none, according to the context."
+  (interactive "*")
+  (save-excursion
+    (delete-horizontal-space)
+    (if (or (looking-at "^\\|\\s)")
+            (save-excursion (forward-char -1)
+                            ;; we adapted the regexp here:
+                            (looking-at "\\cc\\|$\\|\\s(\\|\\s'")))
+        nil
+      (insert ?\s))))
+
+(defun et/delete-indentation (old-func &rest args)
+  (cl-letf (((symbol-function 'fixup-whitespace) #'et/fixup-whitespace))
+    (apply old-func args)))
+
+(advice-add #'delete-indentation :around #'et/delete-indentation)
+

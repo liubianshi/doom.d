@@ -52,7 +52,7 @@
 (use-package! pangu-spacing
   :init
   (add-hook 'org-mode-hook
-            '(lambda ()
+            #'(lambda ()
                (set (make-local-variable
                      'pangu-spacing-real-insert-separtor) t)))
   :config
@@ -60,6 +60,8 @@
 )
 
 ;; 使用普通方法设置行高时没有效果，需要使用这种方法
+(setq-default global-hl-line-modes nil)
+(hl-line-mode -1)
 (defun set-bigger-spacing ()
   (setq-local default-text-properties '(line-spacing 0.25 line-height 1.25)))
 (add-hook 'text-mode-hook 'set-bigger-spacing)

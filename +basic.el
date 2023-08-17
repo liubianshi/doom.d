@@ -1,17 +1,17 @@
 ;;; $DOOMDIR/+basic.el -*- lexical-binding: t; -*-
 
 ;;; 禁止一些消息
-;;(setq warning-suppress-types (append warning-suppress-types '((org-element-cache))))
+(setq warning-suppress-types (append warning-suppress-types '((org-element-cache))))
 
 (if (eq system-type 'darwin)
     (setq fontsize 18
-          fontsize-sc 18
+          fontsize-sc 16
           font-monospace "Fira Code iCursive S12"
           font-monospace-sc "LXGW WenKai Mono"
           font-sans "LXGW WenKai Mono"
-          font-serif "LXGW WenKai"
+          font-serif "LXGW WenKai Mono"
           font-weight 'regular
-          line-space 10
+          line-space 0
           doom-theme 'kanagawa
           )
   (setq fontsize 32
@@ -76,7 +76,6 @@
     delete-by-moving-to-trash t
     window-combination-resize t
     line-spacing line-space
-    line-height 1.5
     x-stretch-cursor t
     tab-width 4
     uniquify-buffer-name-style 'forward)
@@ -151,51 +150,11 @@
   (or (mapcar (lambda (p) (s-starts-with-p p filepath)) projectile-ignored-projects)))
 (setq yas-triggers-in-field t)
 
-(defvar mixed-pitch-modes '(org-mode LaTeX-mode markdown-mode gfm-mode Info-mode)
-  "Modes that `mixed-pitch-mode' should be enabled in, but only after UI initialisation.")
-(defun init-mixed-pitch-h ()
-  "Hook `mixed-pitch-mode' into each mode in `mixed-pitch-modes'.
-Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
-  (when (memq major-mode mixed-pitch-modes)
-    (mixed-pitch-mode 1))
-  (dolist (hook mixed-pitch-modes)
-    (add-hook (intern (concat (symbol-name hook) "-hook")) #'mixed-pitch-mode)))
-(add-hook 'doom-init-ui-hook #'init-mixed-pitch-h)
-(autoload #'mixed-pitch-serif-mode "mixed-pitch"
-  "Change the default face of the current buffer to a serifed variable pitch, while keeping some faces fixed pitch." t)
-
-(after! mixed-pitch
-  (defface variable-pitch-serif
-    '((t (:family "mono")))
-    "A variable-pitch face with serifs."
-    :group 'basic-faces)
-  (setq mixed-pitch-set-height t)
-  (setq variable-pitch-serif-font font-sans)
-  (set-face-attribute 'variable-pitch-serif nil :font variable-pitch-serif-font)
-  (defun mixed-pitch-serif-mode (&optional arg)
-    "Change the default face of the current buffer to a serifed variable pitch, while keeping some faces fixed pitch."
-    (interactive)
-    (let ((mixed-pitch-face 'variable-pitch-serif))
-      (mixed-pitch-mode (or arg 'toggle)))))
-
-(set-char-table-range composition-function-table ?f '(["\\(?:ff?[fijlt]\\)" 0 font-shape-gstring]))
-(set-char-table-range composition-function-table ?T '(["\\(?:Th\\)" 0 font-shape-gstring]))
-
-(defvar +zen-serif-p nil
-  "Whether to use a serifed font with `mixed-pitch-mode'.")
 
 (after! writeroom-mode
   (defvar-local +zen--original-org-indent-mode-p nil)
   (defvar-local +zen--original-mixed-pitch-mode-p nil)
   ;(defvar-local +zen--original-org-pretty-table-mode-p nil)
-  (defun +zen-enable-mixed-pitch-mode-h ()
-    "Enable `mixed-pitch-mode' when in `+zen-mixed-pitch-modes'."
-    (when (apply #'derived-mode-p +zen-mixed-pitch-modes)
-      (if writeroom-mode
-          (progn
-            (setq +zen--original-mixed-pitch-mode-p mixed-pitch-mode)
-            (funcall (if +zen-serif-p #'mixed-pitch-serif-mode #'mixed-pitch-mode) 1))
-        (funcall #'mixed-pitch-mode (if +zen--original-mixed-pitch-mode-p 1 -1)))))
   (pushnew! writeroom--local-variables
             'display-line-numbers
             'visual-fill-column-width
@@ -211,13 +170,12 @@ Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
                       org-adapt-indentation nil)
                 (when (featurep 'org-superstar)
                   (setq-local
-                              ;; org-superstar-headline-bullets-list '("🙘" "🙙" "🙚" "🙛")
-                              ;; org-superstar-headline-bullets-list '("🙐" "🙑" "🙒" "🙓" "🙔" "🙕" "🙖" "🙗")
-                              org-superstar-remove-leading-stars t)
+                        ;; org-superstar-headline-bullets-list '("🙘" "🙙" "🙚" "🙛")
+                        ;; org-superstar-headline-bullets-list '("🙐" "🙑" "🙒" "🙓" "🙔" "🙕" "🙖" "🙗")
+                        org-superstar-remove-leading-stars t)
                   (org-superstar-restart))
                 (setq
                  +zen--original-org-indent-mode-p org-indent-mode
-                 ;;+zen--original-org-pretty-table-mode-p (bound-and-true-p org-pretty-table-mode)
                  )
                 (org-indent-mode 1)
                 ;;(org-pretty-table-mode 1)
@@ -229,7 +187,6 @@ Also immediately enables `mixed-pitch-modes' if currently in one of the modes."
                 (when (featurep 'org-superstar)
                   (org-superstar-restart))
                 (when +zen--original-org-indent-mode-p (org-indent-mode 1))
-                ;; (unless +zen--original-org-pretty-table-mode-p (org-pretty-table-mode -1))
                 ))))
 
 

@@ -165,3 +165,18 @@
   :init
   (setq org-latex-impatient-tex2svg-bin
         "/usr/bin/tex2svg"))
+
+
+;; Disable enlarged org-mode header appearance
+(defun my/org-mode-hook ()
+  "Stop the org-level headers from increasing in height relative to the other text."
+  (custom-set-faces
+   '(org-document-title ((t (:inherit outline-1 :height 1.0))))
+   '(org-document-info  ((t (:inherit outline-2 :height 1.0))))
+   '(org-level-1 ((t (:inherit outline-1 :height 1.0))))
+   '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
+   '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
+   '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+   '(org-level-5 ((t (:inherit outline-5 :height 1.0))))))
+
+(add-hook 'org-mode-hook #'my/org-mode-hook)

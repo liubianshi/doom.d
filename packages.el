@@ -59,7 +59,6 @@
 (package! rime)
 (package! fasd)
 (package! org-ref)
-(package! org-modern)
 (package! org-appear :recipe (:host github :repo "awth13/org-appear"))
 (package! org-ol-tree :recipe (:host github :repo "Townk/org-ol-tree"))
 (package! org-transclusion :recipe (:host github :repo "nobiot/org-transclusion"))

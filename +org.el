@@ -166,93 +166,6 @@
   (setq org-latex-impatient-tex2svg-bin
         "/usr/bin/tex2svg"))
 
-
-;; Org-appear for everything else.
-(use-package! org-appear
-  :after org
-  :hook (org-mode . org-appear-mode)
-  :config (setq
-           org-appear-autolinks t
-           org-appear-autoentities t
-           org-appear-autosubmarkers t ))
-
-
-(use-package! org-modern
-  :hook (org-mode . org-modern-mode)
-  :config
-  (setq org-modern-star '("◉" "○" "✸" "✿" "✤" "✜" "◆" "▶")
-        org-modern-table-vertical 1
-        org-modern-table-horizontal 0.2
-        org-modern-list '((43 . "➤")
-                          (45 . "–")
-                          (42 . "•"))
-        org-modern-todo-faces
-        '(("TODO" :inverse-video t :inherit org-todo)
-          ("PROJ" :inverse-video t :inherit +org-todo-project)
-          ("STRT" :inverse-video t :inherit +org-todo-active)
-          ("[-]"  :inverse-video t :inherit +org-todo-active)
-          ("HOLD" :inverse-video t :inherit +org-todo-onhold)
-          ("WAIT" :inverse-video t :inherit +org-todo-onhold)
-          ("[?]"  :inverse-video t :inherit +org-todo-onhold)
-          ("KILL" :inverse-video t :inherit +org-todo-cancel)
-          ("NO"   :inverse-video t :inherit +org-todo-cancel))
-        org-modern-footnote
-        (cons nil (cadr org-script-display))
-        org-modern-block-fringe nil
-        org-modern-block-name
-        '((t . t)
-          ("src" "»" "«")
-          ("example" "»–" "–«")
-          ("quote" "❝" "❞")
-          ("export" "⏩" "⏪"))
-        org-modern-progress nil
-        org-modern-priority nil
-        org-modern-horizontal-rule (make-string 36 ?─)
-        org-modern-keyword
-        '((t . t)
-          ("title" . "𝙏")
-          ("subtitle" . "𝙩")
-          ("author" . "𝘼")
-          ("email" . #("" 0 1 (display (raise -0.14))))
-          ("date" . "𝘿")
-          ("property" . "☸")
-          ("options" . "⌥")
-          ("startup" . "⏻")
-          ("macro" . "𝓜")
-          ("bind" . #("" 0 1 (display (raise -0.1))))
-          ("bibliography" . "")
-          ("print_bibliography" . #("" 0 1 (display (raise -0.1))))
-          ("cite_export" . "⮭")
-          ("print_glossary" . #("ᴬᶻ" 0 1 (display (raise -0.1))))
-          ("glossary_sources" . #("" 0 1 (display (raise -0.14))))
-          ("include" . "⇤")
-          ("setupfile" . "⇚")
-          ("html_head" . "🅷")
-          ("html" . "🅗")
-          ("latex_class" . "🄻")
-          ("latex_class_options" . #("🄻" 1 2 (display (raise -0.14))))
-          ("latex_header" . "🅻")
-          ("latex_header_extra" . "🅻⁺")
-          ("latex" . "🅛")
-          ("beamer_theme" . "🄱")
-          ("beamer_color_theme" . #("🄱" 1 2 (display (raise -0.12))))
-          ("beamer_font_theme" . "🄱𝐀")
-          ("beamer_header" . "🅱")
-          ("beamer" . "🅑")
-          ("attr_latex" . "🄛")
-          ("attr_html" . "🄗")
-          ("attr_org" . "⒪")
-          ("call" . #("" 0 1 (display (raise -0.15))))
-          ("name" . "⁍")
-          ("header" . "›")
-          ("caption" . "☰")
-          ("results" . "🠶")))
-  (custom-set-faces! '(org-modern-statistics :inherit org-checkbox-statistics-todo)))
-
-;; Since org-modern’s tag face supplants Org’s tag face, we need to adjust the spell-check face ignore list
-(after! spell-fu
-  (cl-pushnew 'org-modern-tag (alist-get 'org-mode +spell-excluded-faces-alist)))
-
 ;; viewing and managing the heading structure
 (use-package! org-ol-tree
   :commands org-ol-tree
@@ -270,15 +183,15 @@
       :desc "Outline" "O" #'org-ol-tree)
 
 ;; improve this situation without sacrificing visual amenities
-(use-package! org-appear
-  :hook (org-mode . org-appear-mode)
-  :config
-  (setq org-appear-autoemphasis t
-        org-appear-autosubmarkers t
-        org-appear-autolinks nil)
-  ;; for proper first-time setup, `org-appear--set-elements'
-  ;; needs to be run after other hooks have acted.
-  (run-at-time nil nil #'org-appear--set-elements))
+;; (use-package! org-appear
+;;   :hook (org-mode . org-appear-mode)
+;;   :config
+;;   (setq org-appear-autoemphasis t
+;;         org-appear-autosubmarkers t
+;;         org-appear-autolinks nil)
+;;   ;; for proper first-time setup, `org-appear--set-elements'
+;;   ;; needs to be run after other hooks have acted.
+;;   (run-at-time nil nil #'org-appear--set-elements))
 
 ;; transclude Org document content.
 (use-package! org-transclusion
@@ -286,97 +199,6 @@
   :init
   (map! :after org :map org-mode-map
         "<f12>" #'org-transclusion-mode))
-
-;; Ligatures adjust
-(after! org
-  (setq org-ellipsis " ▾ ")
-  (appendq! +ligatures-extra-symbols
-            `(:checkbox      "☐"
-              :pending       "◼"
-              :checkedbox    "☑"
-              :list_property "∷"
-              :em_dash       "—"
-              :ellipses      "…"
-              :arrow_right   "→"
-              :arrow_left    "←"
-              :title         nil
-              :subtitle      "𝙩"
-              :author        "𝘼"
-              :date          "𝘿"
-              :property      ""
-              :options       "⌥"
-              :startup       "⏻"
-              :macro         "𝓜"
-              :html_head     "🅷"
-              :html          "🅗"
-              :latex_class   "🄻"
-              :latex_header  "🅻"
-              :beamer_header "🅑"
-              :latex         "🅛"
-              :attr_latex    "🄛"
-              :attr_html     "🄗"
-              :attr_org      "⒪"
-              :begin_quote   "❝"
-              :end_quote     "❞"
-              :caption       "☰"
-              :header        "›"
-              :results       "🠶"
-              :begin_export  "⏩"
-              :end_export    "⏪"
-              :properties    ""
-              :end           "∎"
-              :priority_a   ,(propertize "⚑" 'face 'all-the-icons-red)
-              :priority_b   ,(propertize "⬆" 'face 'all-the-icons-orange)
-              :priority_c   ,(propertize "■" 'face 'all-the-icons-yellow)
-              :priority_d   ,(propertize "⬇" 'face 'all-the-icons-green)
-              :priority_e   ,(propertize "❓" 'face 'all-the-icons-blue)
-              :roam_tags nil
-              :filetags nil))
-  (set-ligatures! 'org-mode
-    :merge t
-    :checkbox      "[ ]"
-    :pending       "[-]"
-    :checkedbox    "[X]"
-    :list_property "::"
-    :em_dash       "---"
-    :ellipsis      "..."
-    :arrow_right   "->"
-    :arrow_left    "<-"
-    :title         "#+title:"
-    :subtitle      "#+subtitle:"
-    :author        "#+author:"
-    :date          "#+date:"
-    :property      "#+property:"
-    :options       "#+options:"
-    :startup       "#+startup:"
-    :macro         "#+macro:"
-    :html_head     "#+html_head:"
-    :html          "#+html:"
-    :latex_class   "#+latex_class:"
-    :latex_header  "#+latex_header:"
-    :beamer_header "#+beamer_header:"
-    :latex         "#+latex:"
-    :attr_latex    "#+attr_latex:"
-    :attr_html     "#+attr_html:"
-    :attr_org      "#+attr_org:"
-    :begin_quote   "#+begin_quote"
-    :end_quote     "#+end_quote"
-    :caption       "#+caption:"
-    :header        "#+header:"
-    :begin_export  "#+begin_export"
-    :end_export    "#+end_export"
-    :results       "#+RESULTS:"
-    :property      ":PROPERTIES:"
-    :end           ":END:"
-    :priority_a    "[#A]"
-    :priority_b    "[#B]"
-    :priority_c    "[#C]"
-    :priority_d    "[#D]"
-    :priority_e    "[#E]"
-    :roam_tags     "#+roam_tags:"
-    :filetags      "#+filetags:")
-  (plist-put +ligatures-extra-symbols :name "⁍")
-  )
 
 (with-eval-after-load 'org
   (plist-put org-format-latex-options :background 'default))

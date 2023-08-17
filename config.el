@@ -63,7 +63,7 @@
 (setq-default global-hl-line-modes nil)
 (hl-line-mode -1)
 (defun set-bigger-spacing ()
-  (setq-local default-text-properties '(line-spacing 0.25 line-height 1.25)))
+  (setq-local default-text-properties '(line-spacing 0.3 line-height 1.3)))
 (add-hook 'text-mode-hook 'set-bigger-spacing)
 (add-hook 'prog-mode-hook 'set-bigger-spacing)
 

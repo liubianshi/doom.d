@@ -48,6 +48,7 @@
 (load! "+company")
 (load! "+bindings")
 (load! "+translate")
+(load! "+youdao")
 
 (use-package! pangu-spacing
   :init

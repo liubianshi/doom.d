@@ -94,7 +94,7 @@
 (package! cdlatex)
 (package! org-latex-impatient)
 
-;; go-translate
+;; translate-go
 (package! go-translate)
 
 ;; 中文显示

@@ -24,14 +24,14 @@
 
 ;; 网络代理
 (setq url-gateway-method 'socks)
-(setq socks-server '("Default server" "127.0.0.1" 1081 5))
+(setq socks-server '("Default server" "127.0.0.1" 10801 5))
 
 ;; 加载其自定义文件
 (load! "+basic")
 (load! "+window")
 (load! "+functions")
 (load! "+rime")
-(load! "+evil-pinyin")
+;; (load! "+evil-pinyin")
 (load! "+org")
 (load! "+fasd")
 (load! "+org-ref")
@@ -48,7 +48,7 @@
 (load! "+company")
 (load! "+bindings")
 (load! "+translate")
-(load! "+youdao")
+;; (load! "+youdao")
 
 (use-package! pangu-spacing
   :init

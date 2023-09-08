@@ -76,6 +76,6 @@
     (use-package! rime
     :custom
     (rime-librime-root "/opt/local/librime/dist")
-    (rime-emacs-module-header-root "/Applications/MacPorts/Emacs.app/Contents/Resources/include/")
+    (rime-emacs-module-header-root "/opt/homebrew/opt/emacs-plus@29/include/")
     (default-input-method "rime"))
   )

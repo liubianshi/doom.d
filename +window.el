@@ -7,7 +7,7 @@
 
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
-(defadvice! prompt-for-buffer (&rest _)
-  :after '(evil-window-split evil-window-vsplit)
-  (+ivy/switch-buffer))
-(setq +ivy-buffer-preview t)
+; (defadvice! prompt-for-buffer (&rest _)
+;   :after '(evil-window-split evil-window-vsplit)
+;   (+ivy/switch-buffer))
+; (setq +ivy-buffer-preview t)

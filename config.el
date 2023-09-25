@@ -6,7 +6,7 @@
 (setq user-full-name "Liubianshi"
       user-mail-address "liu.bian.shi@gmail.com"
       ;org-directory (or (getenv "ORG_LIB") "~/Documents/Writing/Note-Org/")
-      citar-bibliography '("~/Documents/paper_ref.bib")
+      ; citar-bibliography '("~/Documents/paper_ref.bib")
       org-directory "~/Documents/Writing/"
       +lbs/bibtex-lib "~/Documents/paper_ref.bib"
       +lbs/pdf-paper-lib (expand-file-name "Zotero/AttachStorage/" (getenv "NUTSTORE"))
@@ -23,8 +23,8 @@
        auto-mode-alist))
 
 ;; 网络代理
-(setq url-gateway-method 'socks)
-(setq socks-server '("Default server" "127.0.0.1" 10801 5))
+;; (setq url-gateway-method 'socks)
+;; (setq socks-server '("Default server" "127.0.0.1" 10800 5))
 
 ;; 加载其自定义文件
 (load! "+basic")
@@ -34,7 +34,7 @@
 ;; (load! "+evil-pinyin")
 (load! "+org")
 (load! "+fasd")
-(load! "+org-ref")
+;;(load! "+org-ref")
 (load! "+deft")
 (load! "+anki")
 (load! "+ess")
@@ -49,6 +49,7 @@
 (load! "+bindings")
 (load! "+translate")
 ;; (load! "+youdao")
+(load! "+citar")
 
 (use-package! pangu-spacing
   :init

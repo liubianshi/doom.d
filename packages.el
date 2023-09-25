@@ -58,7 +58,7 @@
 
 (package! rime)
 (package! fasd)
-(package! org-ref)
+;; (package! org-ref)
 (package! org-appear :recipe (:host github :repo "awth13/org-appear"))
 (package! org-ol-tree :recipe (:host github :repo "Townk/org-ol-tree"))
 (package! org-transclusion :recipe (:host github :repo "nobiot/org-transclusion"))
@@ -82,11 +82,11 @@
 ;; org-roam
 (package! sqlite)
 (package! websocket)
-(package! org-roam-ui :recipe (:host github :repo "org-roam/org-roam-ui" :files ("*.el" "out")))
+(unpin! org-roam)
+(package! org-roam-ui)
 
 ;; org-roam-bibtex: https://github.com/org-roam/org-roam-bibtex
 ;;(package! org-roam-bibtex :recipe (:host github :repo "org-roam/org-roam-bibtex"))
-(unpin! org-roam)
 ;;(unpin! bibtex-completion helm-bibtex ivy-bibtex)
 
 ;; org-mode 辅助工具

@@ -53,6 +53,7 @@
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies file-templates    ; auto-snippets for empty files
+       file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
        (format)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
@@ -95,8 +96,8 @@
        (lookup +dictionary +docsets +offline) ; navigate your code and its documentation
        ;;lsp
        (magit +forge)             ; a git porcelain for Emacs
-       make              ; run make tasks from Emacs
-       pass              ; password manager for nerds
+       ;;make              ; run make tasks from Emacs
+       ;;pass              ; password manager for nerds
        pdf               ; pdf enhancements
        ;;prodigy                  ; FIXME managing external services & code builders
        ;;rgb                      ; creating color strings
@@ -142,7 +143,7 @@
        (latex +fold)             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
-       lua               ; one-based indices? one-based indices
+       ;;lua               ; one-based indices? one-based indices
        (markdown +grip)          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
@@ -157,7 +158,7 @@
         +pandoc
         ;;+gnuplot
         ;;+pomodoro
-        +present
+        ;;+present
         +roam2
         )             ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
@@ -166,7 +167,7 @@
        ;; (python +pyright)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
-       ;; raku              ; the artist formerly known as perl6
+       ;iraku              ; the artist formerly known as perl6
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}

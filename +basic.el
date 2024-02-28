@@ -9,7 +9,7 @@
 (if (eq system-type 'darwin)
     (setq fontsize 18
           fontsize-sc 18
-          font-monospace "FiraCode Nerd Font Mono"
+          font-monospace "Maple Mono SC NF"
           font-monospace-sc "LXGW WenKai Mono"
           font-sans "LXGW WenKai Mono"
           font-serif "AR PL UKai CN"
@@ -17,15 +17,15 @@
           line-space 0
           doom-theme 'kanagawa
           )
-  (setq fontsize 32
-        fontsize-sc 30
-        font-monospace "Fira Code iCursive S12"
+  (setq fontsize 28
+        fontsize-sc 28
+        font-monospace "Maple Mono NF"
         font-monospace-sc "LXGW WenKai Mono"
-        font-sans "LXGW WenKai Mono"
+        font-sans "AR PL UKai CN"
         font-serif "LXGW WenKai Mono"
-        font-weight 'regular
-        line-space 0
-        doom-theme 'kanagawa
+        font-weight 'semi-light
+        line-space 0.2
+        doom-theme 'catppuccin
         ))
 
 
@@ -118,11 +118,11 @@
 ;; (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 27)
 ;;       doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 27))
 
-(setq doom-font (font-spec :family font-monospace :size fontsize :weight font-weight)
-      doom-variable-pitch-font (font-spec :family font-sans :size fontsize :weight font-weight)
-      doom-unicode-font (font-spec :family font-sans :size fontsize-sc :weight font-weight)
-      doom-serif-font (font-spec :family font-serif :size fontsize-sc)
-      doom-big-font (font-spec :family font-sans :size (floor (* fontsize 1))))
+(setq doom-font                (font-spec :family font-monospace :size fontsize    :weight font-weight)
+      doom-variable-pitch-font (font-spec :family font-sans      :size fontsize    :weight font-weight)
+      doom-unicode-font        (font-spec :family font-sans      :size fontsize-sc :weight font-weight)
+      doom-serif-font          (font-spec :family font-serif     :size fontsize-sc)
+      doom-big-font            (font-spec :family font-sans      :size (floor (* fontsize 1))))
 
 (defun +my/better-font()
     (interactive)
@@ -163,11 +163,11 @@
   (defvar-local +zen--original-org-indent-mode-p nil)
   (defvar-local +zen--original-mixed-pitch-mode-p nil)
   (defun +zen-prose-org-h ()
-    "Reformat the current Org buffer appearance for prose."
+    "reformat the current org buffer appearance for prose."
     (setq display-line-numbers nil)
     (when (eq major-mode 'org-mode)
       (setq org-adapt-indentation -1
-            visual-fill-column-width 100)
+            visual-fill-column-width 70)
       (when (featurep 'org-superstar)
         (setq-local org-superstar-remove-leading-stars t)
         (org-superstar-restart))
@@ -175,7 +175,7 @@
       (org-indent-mode 1)
       ))
   (defun +zen-nonprose-org-h ()
-    "Reverse the effect of `+zen-prose-org'."
+    "reverse the effect of `+zen-prose-org'."
     (when (eq major-mode 'org-mode)
       (when (featurep 'org-superstar)
         (org-superstar-restart))

@@ -151,11 +151,8 @@
 
 ;; org-download 设定
 (add-hook 'dired-mode-hook 'org-download-enable)
-(use-package! org-download
-  :after 'org
-  :config
-  (setq-default org-download-image-dir "./.asset"))
-
+(use-package! org-download :after 'org)
+(setq-default org-download-image-dir "./.asset")
 (setq org-hide-emphasis-markers t)
 
 ;; org-latex-impatient 设定
@@ -183,15 +180,15 @@
       :desc "Outline" "O" #'org-ol-tree)
 
 ;; improve this situation without sacrificing visual amenities
-;; (use-package! org-appear
-;;   :hook (org-mode . org-appear-mode)
-;;   :config
-;;   (setq org-appear-autoemphasis t
-;;         org-appear-autosubmarkers t
-;;         org-appear-autolinks nil)
-;;   ;; for proper first-time setup, `org-appear--set-elements'
-;;   ;; needs to be run after other hooks have acted.
-;;   (run-at-time nil nil #'org-appear--set-elements))
+(use-package! org-appear
+  :hook (org-mode . org-appear-mode)
+  :config
+  (setq org-appear-autoemphasis t
+        org-appear-autosubmarkers t
+        org-appear-autolinks nil)
+  ;; for proper first-time setup, `org-appear--set-elements'
+  ;; needs to be run after other hooks have acted.
+  (run-at-time nil nil #'org-appear--set-elements))
 
 ;; transclude Org document content.
 (use-package! org-transclusion

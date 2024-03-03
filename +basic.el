@@ -10,12 +10,12 @@
     (setq fontsize 18
           fontsize-sc 18
           font-monospace "Maple Mono SC NF"
-          font-monospace-sc "LXGW WenKai Mono"
+          font-monospace-sc "TsangerJinKai04 W03"
           font-sans "LXGW WenKai Mono"
           font-serif "AR PL UKai CN"
-          font-weight 'regular
-          line-space 0
-          doom-theme 'kanagawa
+          font-weight 'semi-light
+          line-space 0.2
+          doom-theme 'doom-bluloco-light
           )
   (setq fontsize 28
         fontsize-sc 28
@@ -134,7 +134,7 @@
             (dolist (charset '(kana han symbol cjk-misc bopomofo))
                 (set-fontset-font (frame-parameter nil 'font)
                     charset
-                    (font-spec :family font-monospace-sc :size fontsize-sc))))))
+                    (font-spec :family font-monospace-sc :size fontsize-sc :weight 'bold))))))
 
 (defun +my|init-font(frame)
   (with-selected-frame frame
